@@ -2,29 +2,45 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import About from './About';  // Importing components
+import Home from './Home';
+import Login from './Login';
+
+
 
 function App() {
-  const [count, setCount] = useState(0)
+    const [activeTab, setActiveTab] = useState('Home');
 
-  return (
-    <>
-      <h1>Welcome to LyftMyBag</h1>
-      <h2>Please Log in with your Gatorlink credentials</h2>
+    const tabClick = (tabName) => {
+        setActiveTab(tabName);
+    }
 
-      Hello my name is Savannah
+    const openTabContent = () => {
+        switch (activeTab) {
+            case 'About':
+                return <About />;
+            case 'Home':
+                return <Home />;
+            case 'Login':
+                return <Login />;
+            default:
+                return <Home />;
+        }
+    };
 
-      <img src="https://www.shutterstock.com/image-vector/cute-crocodile-business-holding-suitcase-600nw-2223279211.jpg" 
-          width="200"
-          height="200"/>
+    return (
+      <div>
+          <div class="tab">
+              <button class="tablinks" onClick={() => tabClick('About') }>About</button>
+              <button class="tablinks" onClick={() => tabClick('Home')}>Home</button>
+              <button class="tablinks" onClick={() => tabClick('Login')}>Login</button>
+          </div>
 
-      <form>
-          <label htmlFor="fname">Gatorlink Username:</label><br />
-          <input type="text" id="fname" name="fname" /><br />
-          <label htmlFor="lname">Password:</label><br />
-          <input type="text" id="lname" name="lname" /><br />
-          <input type="submit" value="Login" />
-      </form>
-    </>
+          <div class="tab-content">
+              {openTabContent()}
+          </div>
+
+      </div>
   )
 }
 
