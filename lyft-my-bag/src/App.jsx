@@ -5,6 +5,14 @@ import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
+  const [data, setData] = useState('');
+  
+  useEffect(() => {
+    fetch('http://127.0.0.1:5000/api/data')
+        .then(response => response.json())
+        .then(data => setData(data.message))
+        .catch(error => console.error('Error fetching data:', error));
+}, []);
 
   return (
     <>
