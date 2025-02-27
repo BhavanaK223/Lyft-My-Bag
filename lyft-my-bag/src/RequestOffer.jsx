@@ -16,18 +16,43 @@ const RequestOffer = () => {
                 style={{
                     position: 'fixed',
                     top: 50,
-                    //left: 0,
+                    right: 0,
                     width: '100%',
                     backgroundColor: '#f1f1f1',
+                    display: 'flex',
                     justifyContent: 'center',
                 }}
             >
-                <button class="tablinks" onClick={() => tabClick('Request Ride')}>Request Ride</button>
-                <button class="tablinks" onClick={() => tabClick('Offer Ride')}>Offer Ride</button>
+                <button className="tablinks" onClick={() => tabClick('Request Ride')}>Request Ride</button>
+                <button className="tablinks" onClick={() => tabClick('Offer Ride')}>Offer Ride</button>
             </div>
+            <img src="https://www.shutterstock.com/image-vector/cute-crocodile-business-holding-suitcase-600nw-2223279211.jpg"
+                width="200"
+                height="200"
+                style={{ width: 100, height: 100, position: 'fixed', left: 0, top: 0 }} />
+
+
             <div style={{ marginTop: "50px", padding: "20px" }}>
-                {activeTab === "Request Ride" && <div><h2>Request Ride</h2><p>Content for the request tab.</p></div>}
-                {activeTab === "Offer Ride" && <div><h2>Offer Ride</h2><p>Content for the offer tab.</p></div>}
+                {activeTab === "Request Ride" && <div><form>
+                    <label htmlFor="fname">Name:</label><br />
+                    <input type="text" id="fname" name="fname" /><br />
+                    <label htmlFor="lname">Destination:</label><br />
+                    <input type="text" id="lname" name="lname" /><br />
+                    <label htmlFor="lname">Duration be gone:</label><br />
+                    <input type="text" id="lname" name="lname" /><br />
+                    <input type="submit" value="Request" />
+                </form></div>}
+                {activeTab === "Offer Ride" && <div><form>
+                    <label htmlFor="fname">Name:</label><br />
+                    <input type="text" id="fname" name="fname" /><br />
+                    <label htmlFor="lname">Destination:</label><br />
+                    <input type="text" id="lname" name="lname" /><br />
+                    <label htmlFor="lname">Duration be gone:</label><br />
+                    <input type="text" id="lname" name="lname" /><br />
+                    <label htmlFor="lname">Seats Available:</label><br />
+                    <input type="text" id="lname" name="lname" /><br />
+                    <input type="submit" value="Offer" />
+                </form></div>}
             </div>
         </div>
     );
