@@ -1,0 +1,358 @@
+.home-page {
+    background-color: #f3f8f2;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+    .home-page .div {
+        background-color: var(--white);
+        height: 3189px;
+        overflow: visible;
+        position: relative;
+        min-height: 100vh;
+        width: 100%;
+    }
+
+    .home-page .footer {
+        background-color: transparent;
+        height: 675px;
+        left: 1px;
+        overflow: auto;
+        position: absolute;
+        top: 2514px;
+        width: 1440px;
+    }
+
+    .home-page .overlap-group {
+        background-color: var(--dark-green);
+        border-radius: 897.5px / 671.5px;
+        height: 1343px;
+        left: -178px;
+        position: relative;
+        width: 1795px;
+    }
+
+    .home-page .dev-team-cindy {
+        color: #000000;
+        font-family: var(--paragraph-font-family);
+        font-size: var(--paragraph-font-size);
+        font-style: var(--paragraph-font-style);
+        font-weight: var(--paragraph-font-weight);
+        left: 519px;
+        letter-spacing: var(--paragraph-letter-spacing);
+        line-height: var(--paragraph-line-height);
+        position: absolute;
+        text-align: center;
+        top: 145px;
+    }
+
+    .home-page .overlap {
+        height: 2513px;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 1440px;
+    }
+
+    .home-page .instructions {
+        background-color: var(--white);
+        height: 1682px;
+        left: 0;
+        position: absolute;
+        top: 831px;
+        width: 1440px;
+    }
+
+    .home-page .overlap-2 {
+        height: 1423px;
+        left: 0;
+        position: absolute;
+        top: 164px;
+        width: 1440px;
+    }
+
+    .home-page .figure {
+        height: 1423px;
+        left: 167px;
+        position: absolute;
+        top: 0;
+        width: 1106px;
+    }
+
+    .home-page .passenger-info {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        gap: 31px;
+        left: 0;
+        padding: 31px 0px;
+        position: absolute;
+        top: 736px;
+        width: 1440px;
+    }
+
+    .home-page .text-wrapper {
+        align-self: stretch;
+        color: #ffffff;
+        font-family: var(--paragraph-font-family);
+        font-size: var(--paragraph-font-size);
+        font-style: var(--paragraph-font-style);
+        font-weight: var(--paragraph-font-weight);
+        letter-spacing: var(--paragraph-letter-spacing);
+        line-height: var(--paragraph-line-height);
+        margin-top: -1.00px;
+        position: relative;
+        text-align: center;
+    }
+
+    .home-page .cards {
+        align-self: stretch;
+        height: 460px;
+        position: relative;
+        width: 100%;
+    }
+
+    .home-page .overlap-group-2 {
+        border-radius: 30px;
+        height: 407px;
+        left: 992px;
+        position: absolute;
+        top: 30px;
+        width: 307px;
+    }
+
+    .home-page .card-instance {
+        left: 0 !important;
+        position: absolute !important;
+        top: 0 !important;
+    }
+
+    .home-page .eco {
+        height: 175px;
+        left: 66px;
+        position: absolute;
+        top: 52px;
+        width: 175px;
+    }
+
+    .home-page .overlap-3 {
+        border-radius: 30px;
+        height: 407px;
+        left: 568px;
+        position: absolute;
+        top: 30px;
+        width: 307px;
+    }
+
+    .home-page .conditions {
+        height: 175px;
+        left: 64px;
+        position: absolute;
+        top: 66px;
+        width: 175px;
+    }
+
+    .home-page .trip-form {
+        left: 142px !important;
+        position: absolute !important;
+        top: 30px !important;
+    }
+
+    .home-page .button {
+        all: unset;
+        align-items: center;
+        background-color: var(--honeydew);
+        border: 1px solid;
+        border-color: var(--dark-green);
+        border-radius: 30px;
+        box-sizing: border-box;
+        display: inline-flex;
+        flex: 0 0 auto;
+        gap: 10px;
+        justify-content: center;
+        overflow: hidden;
+        padding: 10px 30px;
+        position: relative;
+    }
+
+    .home-page .text-wrapper-2 {
+        color: var(--dark-green);
+        font-family: "Roboto-Bold", Helvetica;
+        font-size: 20px;
+        font-weight: 700;
+        letter-spacing: 0;
+        line-height: normal;
+        margin-top: -1.00px;
+        position: relative;
+        white-space: nowrap;
+        width: fit-content;
+    }
+
+    .home-page .driver-info {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        gap: 31px;
+        left: 0;
+        padding: 31px 0px;
+        position: absolute;
+        top: 0;
+        width: 1440px;
+    }
+
+    .home-page .text-wrapper-3 {
+        color: var(--dark-green);
+        font-family: var(--sub-heading-font-family);
+        font-size: var(--sub-heading-font-size);
+        font-style: var(--sub-heading-font-style);
+        font-weight: var(--sub-heading-font-weight);
+        left: 35px;
+        letter-spacing: var(--sub-heading-letter-spacing);
+        line-height: var(--sub-heading-line-height);
+        position: absolute;
+        text-align: center;
+        top: 45px;
+        white-space: nowrap;
+    }
+
+    .home-page .landing {
+        background-color: var(--white);
+        height: 842px;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 1440px;
+    }
+
+    .home-page .overlap-4 {
+        height: 118px;
+        left: 0;
+        position: absolute;
+        top: -1px;
+        width: 1440px;
+    }
+
+    .home-page .img {
+        height: 117px;
+        left: 0;
+        position: absolute;
+        top: 1px;
+        width: 1440px;
+    }
+
+    .home-page .header-buttons {
+        align-items: flex-start;
+        display: flex;
+        gap: 20px;
+        justify-content: flex-end;
+        left: 1106px;
+        padding: 0px 6px 0px 10px;
+        position: absolute;
+        top: 21px;
+        width: 312px;
+    }
+
+    .home-page .get-started-button {
+        all: unset;
+        align-items: center;
+        background-color: var(--dark-green);
+        border: 1px solid;
+        border-color: var(--dark-green);
+        border-radius: 30px;
+        box-sizing: border-box;
+        display: inline-flex;
+        flex: 0 0 auto;
+        gap: 10px;
+        justify-content: center;
+        overflow: hidden;
+        padding: 10px 30px;
+        position: relative;
+    }
+
+    .home-page .text-wrapper-4 {
+        color: var(--honeydew);
+        font-family: "Roboto-Bold", Helvetica;
+        font-size: 20px;
+        font-weight: 700;
+        letter-spacing: 0;
+        line-height: normal;
+        margin-top: -1.00px;
+        position: relative;
+        white-space: nowrap;
+        width: fit-content;
+    }
+
+    .home-page .login-button {
+        all: unset;
+        align-items: center;
+        background-color: #ffffff;
+        border: 1px solid;
+        border-color: var(--dark-green);
+        border-radius: 30px;
+        box-sizing: border-box;
+        display: inline-flex;
+        flex: 0 0 auto;
+        gap: 10px;
+        justify-content: center;
+        overflow: hidden;
+        padding: 10px 30px;
+        position: relative;
+    }
+
+    .home-page .text-wrapper-5 {
+        color: var(--dark-green);
+        font-family: "Inter-ExtraBold", Helvetica;
+        font-size: 64px;
+        font-weight: 800;
+        left: 28px;
+        letter-spacing: 0;
+        line-height: normal;
+        position: absolute;
+        top: 0;
+    }
+
+    .home-page .gator-blur {
+        height: 629px;
+        left: 145px;
+        position: absolute;
+        top: 145px;
+        width: 494px;
+    }
+
+    .home-page .frame {
+        align-items: flex-start;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        height: 453px;
+        left: 846px;
+        padding: 7px 0px;
+        position: absolute;
+        top: 212px;
+        width: 447px;
+    }
+
+    .home-page .p {
+        align-self: stretch;
+        color: var(--dark-green);
+        font-family: "Roboto-ExtraBold", Helvetica;
+        font-size: 64px;
+        font-weight: 800;
+        letter-spacing: 0;
+        line-height: normal;
+        margin-top: -1.00px;
+        position: relative;
+    }
+
+    .home-page .text-wrapper-6 {
+        align-self: stretch;
+        color: var(--dark-green);
+        font-family: "Roboto Mono-Thin", Helvetica;
+        font-size: 36px;
+        font-weight: 100;
+        letter-spacing: 0;
+        line-height: normal;
+        position: relative;
+    }
