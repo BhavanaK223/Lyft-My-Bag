@@ -1,4 +1,5 @@
 ﻿import React from "react";
+import { Link } from "react-router-dom";
 import { Card } from "./Card";
 import conditions from "./conditions.png";
 import eco from "./eco.png";
@@ -117,7 +118,7 @@ export const HomePage = () => {
                                 </button>
 
                                 <button className="login-button">
-                                    <div className="text-wrapper-2">Login</div>
+                                    <Link to="/login">Login</Link>
                                 </button>
                             </div>
 

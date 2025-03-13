@@ -1,4 +1,5 @@
 ﻿import React from "react";
+import { Link } from "react-router-dom";
 import { TextLink } from "./TextLink";
 import gatorBlur2 from "./public/gator-blur-2.png";
 import "./style.css";
@@ -10,6 +11,7 @@ export const LoginPage = () => {
                 <img className="gator-blur" alt="Gator blur" src={gatorBlur2} />
 
                 <div className="div">Welcome Back!</div>
+                <Link to="/">Go to Home Page</Link>
 
                 <p className="p">Please enter your information below:</p>
 
@@ -40,3 +42,4 @@ export const LoginPage = () => {
         </div>
     );
 };
+export default LoginPage;
