@@ -3,12 +3,13 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
+    min-height: 100vh;
     width: 100%;
 }
 
     .home-page .div {
         background-color: var(--white);
-        height: 3189px;
+        height: auto;
         overflow: visible;
         position: relative;
         min-height: 100vh;
@@ -157,7 +158,24 @@
     .home-page .trip-form {
         left: 142px !important;
         position: absolute !important;
-        top: 30px !important;
+        top: 0px !important;
+    }
+
+    .home-page .overlap-9 {
+        border-radius: 30px;
+        height: 407px;
+        left: 142px;
+        position: absolute;
+        top: 30px;
+        width: 307px;
+    }
+
+    .home-page .edit {
+        height: 175px;
+        left: 62px;
+        position: absolute;
+        top: 66px;
+        width: 175px;
     }
 
     .home-page .button {

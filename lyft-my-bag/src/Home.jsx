@@ -6,6 +6,7 @@ import eco from "./eco.png";
 import figure2 from "./figure-2.png";
 import figure6 from "./figure-6.png";
 import gatorBlur2 from "./gator-blur-2.png";
+import editsquare from "./edit_square.png"
 import "./style.css";
 
 export const HomePage = () => {
@@ -35,7 +36,6 @@ export const HomePage = () => {
                                     <div className="overlap-group-2">
                                         <Card
                                             className="card-instance"
-                                            editSquare="edit-square-5.png"
                                             text="meet new people and reduce your carbon footprint!"
                                         />
                                         <img className="eco" alt="Eco" src={eco} />
@@ -44,7 +44,7 @@ export const HomePage = () => {
                                     <div className="overlap-3">
                                         <Card
                                             className="card-instance"
-                                            editSquare="edit-square-6.png"
+                                            editSquare="./edit_square.png"
                                             text="request to ride with a driver"
                                         />
                                         <img
@@ -54,11 +54,18 @@ export const HomePage = () => {
                                         />
                                     </div>
 
-                                    <Card
-                                        className="trip-form"
-                                        editSquare="edit-square-7.png"
-                                        text="look at posted trips"
-                                    />
+                                    <div className="overlap-9">
+                                        <Card
+                                            className="trip-form"
+                                            editSquare="edit-square-4.png"
+                                            text="look at posted trips"
+                                        />
+                                        <img
+                                            className="edit"
+                                            alt="edit"
+                                            src={editsquare}
+                                        />
+                                    </div>
                                 </div>
 
                                 <button className="button">
@@ -92,11 +99,19 @@ export const HomePage = () => {
                                         />
                                     </div>
 
-                                    <Card
-                                        className="trip-form"
-                                        editSquare="edit-square-4.png"
-                                        text="fill out a trip form"
-                                    />
+                                    <div className="overlap-9">
+                                        <Card
+                                            className="trip-form"
+                                            editSquare="edit-square-4.png"
+                                            text="fill out a trip form"
+                                        />
+                                        <img
+                                            className="edit"
+                                            alt="edit"
+                                            src={editsquare}
+                                        />
+                                    </div>
+                              
                                 </div>
 
                                 <button className="button">
