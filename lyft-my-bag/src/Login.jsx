@@ -15,6 +15,19 @@ export const LoginPage = () => {
 
                 <p className="p">Please enter your information below:</p>
 
+                <p className="p">Please enter your information below:</p>
+
+                {/* <div className="input-field">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" placeholder="example@gmail.com"></input>
+                    <label for="password">Password</label>
+                    <input type="text" id="password" placeholder="Password"></input>
+                    <div>
+                    <button type= "submit" id="sign_in">Sign in</button>
+
+                    </div>
+                </div> */}
+
                 <div className="input-field">
                     <div className="label">Email</div>
 
