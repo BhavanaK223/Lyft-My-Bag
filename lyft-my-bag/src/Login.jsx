@@ -1,23 +1,58 @@
 ﻿import React from "react";
+import { Link } from "react-router-dom";
+import { TextLink } from "./TextLink";
+import gatorBlur2 from "./public/gator-blur-2.png";
+import "./style.css";
 
-
-const Login = () => {
+export const LoginPage = () => {
     return (
-        <>  
-            <img src="https://www.shutterstock.com/image-vector/cute-crocodile-business-holding-suitcase-600nw-2223279211.jpg"
-                width="200"
-                height="200"
-                style={{ width: 100, height: 100, position: 'fixed', left: 0, top: 0 }} />
+        <div className="login-page">
+            <div className="form-log-in">
+                <img className="gator-blur" alt="Gator blur" src={gatorBlur2} />
 
-            <h1>Please Login with your GatorLink Credentials</h1>
-            <form>
-                <label htmlFor="fname">Gatorlink Username:</label><br />
-                <input type="text" id="fname" name="fname" /><br />
-                <label htmlFor="lname">Password:</label><br />
-                <input type="text" id="lname" name="lname" /><br />
-                <input type="submit" value="Login" />
-            </form>
-        </>
-    )
-}
-export default Login
+                <div className="div">Welcome Back!</div>
+                <Link to="/">Go to Home Page</Link>
+
+                <p className="p">Please enter your information below:</p>
+
+                <p className="p">Please enter your information below:</p>
+
+                {/* <div className="input-field">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" placeholder="example@gmail.com"></input>
+                    <label for="password">Password</label>
+                    <input type="text" id="password" placeholder="Password"></input>
+                    <div>
+                    <button type= "submit" id="sign_in">Sign in</button>
+
+                    </div>
+                </div> */}
+
+                <div className="input-field">
+                    <div className="label">Email</div>
+
+                    <div className="input">
+                        <div className="text-wrapper-2">Value</div>
+                    </div>
+                </div>
+
+                <div className="input-field">
+                    <div className="label">Password</div>
+
+                    <div className="input">
+                        <div className="text-wrapper-2">Value</div>
+                    </div>
+                </div>
+
+                <div className="button-group">
+                    <button className="button">
+                        <button className="button-2">Sign In</button>
+                    </button>
+                </div>
+
+                <TextLink className="text-link-instance" text="Forgot password?" />
+            </div>
+        </div>
+    );
+};
+export default LoginPage;
