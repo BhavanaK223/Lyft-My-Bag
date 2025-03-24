@@ -379,16 +379,16 @@
     background-color: var(--honeydew);
     display: flex;
     gap: 10px;
-    height: 1024px;
+    height: auto;
+    min-height: 100vh;
     justify-content: center;
-    min-width: 1440px;
-    padding: 220px 160px;
+    min-width: 1024px;
     position: relative;
     width: 100%;
 }
 
     .login-page .form-log-in {
-        align-items: flex-start;
+        align-items: center;
         background-color: var(--color-background-default-default);
         border-radius: 30px;
         box-shadow: 0px 4px 16px #2222221a;
@@ -397,7 +397,7 @@
         gap: 24px;
         margin-top: -5.00px;
         padding: 50px;
-        position: relative;
+        position: absolute;
         width: 410px;
     }
 
@@ -421,8 +421,8 @@
 
     .login-page .p {
         color: #000000;
-        font-family: "Roboto Mono-Regular", Helvetica;
-        font-size: 12px;
+        font-family: var(--paragraph-font-family);
+        font-size: 15px;
         font-weight: 400;
         letter-spacing: 0;
         line-height: normal;
