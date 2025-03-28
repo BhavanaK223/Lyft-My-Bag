@@ -12,24 +12,24 @@ app.config["MONGO_URI"] = "mongodb+srv://LyftMyBag:SuperSecret@lyftmybag.3hifm.m
 mongo = PyMongo(app)
 
 # Route for user login
-@app.route("/login", methods=["POST"])
+@app.route('/login', methods=['POST'])
 def login():
     data = request.get_json()
-    
-    # Extract username/email and password
-    username = data.get('username')
+
+    # Get email and password from the request
+    email = data.get('username')
     password = data.get('password')
 
-    if not username or not password:
-        return jsonify({"error": "Username and password are required"}), 400
+    if not email or not password:
+        return jsonify({"error": "Email and password are required"}), 400
 
     # Check if the user exists in the 'users' collection
-    user = mongo.db.users.find_one({"username": username})
-    
-    if not user or not check_password_hash(user['password'], password):  # Assuming password is hashed
-        return jsonify({"error": "Invalid username or password"}), 401
+    user = mongo.db.users.find_one({"email": email})
 
-    return jsonify({"message": "Login successful", "user": user['username']}), 200
+    if not user or user['password'] != password:
+        return jsonify({"error": "Invalid email or password"}), 401
+
+    return jsonify({"message": "Login successful", "user": user['email']}), 200
 
 if __name__ == '__main__':
     app.run(debug=True)
