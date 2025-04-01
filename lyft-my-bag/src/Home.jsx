@@ -134,6 +134,7 @@ export const HomePage = () => {
 
                                 <button className="login-button">
                                     <Link to="/login">Login</Link>
+                                    <Link to="/profile">Profile</Link>
                                 </button>
                             </div>
 
