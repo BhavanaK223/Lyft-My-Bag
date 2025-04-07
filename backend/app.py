@@ -46,7 +46,8 @@ def register():
     lastName = data.get('lastName')
     email = data.get('registeredEmail')
     password = data.get('registeredPassword')
-
+    
+    # checks if parsed correctly
     if not firstName or not lastName or not email or not password:
         return jsonify({"error": "All fields are required"}), 400
 

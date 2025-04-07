@@ -14,6 +14,8 @@ export const LoginPage = () => {
         email: "",
         password: "",
     });
+    const [errorMessage, setErrorMessage] = useState('');
+    const [successMessage, setSuccessMessage] = useState('');
 
     const toggleForm = () => setIsRegistering(!isRegistering);
 
@@ -37,11 +39,21 @@ export const LoginPage = () => {
                 body: JSON.stringify(payload),
             });
 
-            const data = await response.json();
-            alert(data.message || data.error);
-        } catch (error) {
-            console.error("Error:", error);
-        }
+            const result = await response.json();
+  
+            if (response.ok) {
+              // Login successful
+              setSuccessMessage(result.message);
+              setErrorMessage('');
+            } else {
+              // Error handling
+              setErrorMessage(result.error || 'An unknown error occurred');
+              setSuccessMessage('');
+            }
+          } catch (error) {
+            setErrorMessage('Failed to connect to the server');
+            setSuccessMessage('');
+          }
     };
 
     return (
@@ -52,27 +64,37 @@ export const LoginPage = () => {
             <Link to="/">Go to Home Page</Link>
             <h2>{isRegistering ? "Register" : "Login"}</h2>
             <div className="p">Please enter your information below:</div>
-            <div className = "input-field">
             <form onSubmit={handleSubmit}>
                 {isRegistering ? (
                     <>
+                    <div className="input-field">
+                      <label>First Name</label>
                       <input type="text" name="firstName" placeholder="First Name" onChange={handleChange} required />
+                      <label>Last Name</label>
                       <input type="text" name="lastName" placeholder="Last Name" onChange={handleChange} required />
+                      <label>Email</label>
                       <input type="text" name="registeredEmail" placeholder="example@ufl.edu" onChange={handleChange} required />
+                      <label>Password</label>
                       <input type="text" name="registeredPassword" placeholder="Password" onChange={handleChange} required />
+                    </div>
                     </>
                 ) : (
                     <>
-                      <input type="text" name="email" placeholder="example@ufl.edu" onChange={handleChange} required />
-                      <input type="text" name="password" placeholder="Password" onChange={handleChange} required />
+                    <div className="input-field">
+                        <label>Email</label>
+                        <input type="text" name="email" placeholder="example@ufl.edu" onChange={handleChange} required />
+                        <label>Password</label>
+                        <input type="text" name="password" placeholder="Password" onChange={handleChange} required />
+                    </div>
                     </>
                 )}
                 <button type="submit">{isRegistering ? "Register" : "Login"}</button>
             </form>
+            {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+            {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
             <button onClick={toggleForm}>
                 {isRegistering ? "Already have an account? Login" : "Don't have an account? Register"}
             </button>
-            </div>
           </div>
         </div>
     );
