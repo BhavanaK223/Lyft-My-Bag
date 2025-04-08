@@ -1,24 +1,45 @@
-import React, {useState} from "react";
-import { Link } from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { TextLink } from "./TextLink";
 
 export const Profile = () => {
+    //const [activeTab, setActiveTab] = useState('Profile');
+    const [user, setUser] = useState(null);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const storedUser = localStorage.getItem('user');
+        if(storedUser) {
+            setUser(JSON.parse(storedUser));
+        }
+    }, []);
+
+    const handleLogout = () => {
+        localStorage.removeItem('user');
+        setUser(null);
+        navigate('/login');
+    }
+    
 
     return(
-
-        
         <div className="page">
             <div> {/* Create Navbar jsx file to make nav bar consistent => call function each page */}
                 <Link to="/">Go to Home Page </Link>
                 <Link to="/login">Login </Link>
                 <Link to="/profile">Profile </Link>
             </div>
-            <h1>My Profile</h1>
-            <h2>Welcome to your profile!</h2>
-            <p>Here you can view and edit your personal information.</p>
-            <TextLink text="Edit Profile" link="/edit-profile" />
-            <TextLink text="View Trips" link="/view-trips" />
-            <TextLink text="Settings" link="/settings" />
+            {user ? (
+                <>
+                    <h2>Welcome, {user.firstName} {user.lastName}!</h2>
+                    <p>Email: {user.email}</p>
+                    <button onClick={handleLogout}>Logout</button>
+                </>
+            ) : (
+                <>
+                    <h2>You are not logged in</h2>
+                    <a href="/login">Go to Login</a>
+                </>
+            )}
         </div>
 
     );

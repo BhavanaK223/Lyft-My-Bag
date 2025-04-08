@@ -1,5 +1,6 @@
 ﻿import React, {useState} from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { TextLink } from "./TextLink";
 import gatorBlur2 from "./public/gator-blur-2.png";
 import "./style.css";
@@ -18,6 +19,7 @@ export const LoginPage = () => {
     const [successMessage, setSuccessMessage] = useState('');
 
     const toggleForm = () => setIsRegistering(!isRegistering);
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -45,6 +47,10 @@ export const LoginPage = () => {
               // Login successful
               setSuccessMessage(result.message);
               setErrorMessage('');
+              if (!isRegistering) {
+                localStorage.setItem("user", JSON.stringify(result.user)); // Store user data
+                navigate("/profile"); // Redirect to dashboard
+              }
             } else {
               // Error handling
               setErrorMessage(result.error || 'An unknown error occurred');
@@ -60,9 +66,8 @@ export const LoginPage = () => {
         <div className ="login-page">
           <div className="form-log-in">
             <img className="gator-blur" alt="Gator blur" src={gatorBlur2} />
-            <div className="div">Welcome Back!</div>
-            <Link to="/">Go to Home Page</Link>
-            <h2>{isRegistering ? "Register" : "Login"}</h2>
+            <Link to="/">Go to Home Page </Link>
+            <h2>{isRegistering ? "Welcome Back!" : "Create an Account"}</h2>
             <div className="p">Please enter your information below:</div>
             <form onSubmit={handleSubmit}>
                 {isRegistering ? (
