@@ -32,6 +32,7 @@ export const Profile = () => {
                 <>
                     <h2>Welcome, {user.firstName} {user.lastName}!</h2>
                     <p>Email: {user.email}</p>
+                    <Link to="/request">Request a Ride</Link><br />
                     <button onClick={handleLogout}>Logout</button>
                 </>
             ) : (
