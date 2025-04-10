@@ -31,7 +31,13 @@ def login():
     if not user or user['password'] != password:
         return jsonify({"error": "Invalid email or password"}), 401
 
-    return jsonify({"message": "Login successful", "user": user['email']}), 200
+    return jsonify({
+        "message": "Login successful", 
+        "user": {
+            "firstName": user['firstName'],
+            "lastName": user['lastName'],
+            "email": user['email']}    
+        }), 200
 
 # Route for user registration
 @app.route('/register', methods=['POST'])
