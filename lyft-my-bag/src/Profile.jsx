@@ -10,8 +10,8 @@ export const Profile = () => {
         <div className="page">
             <div> {/* Create Navbar jsx file to make nav bar consistent => call function each page */}
                 <Link to="/">Go to Home Page </Link>
-                <Link to="/login">Login </Link>
-                <Link to="/profile">Profile </Link>
+                {/*<Link to="/login">Login </Link>
+                <Link to="/profile">Profile </Link>*/}
             </div>
             <h1>My Profile</h1>
             <h2>Welcome to your profile!</h2>
@@ -25,3 +25,5 @@ export const Profile = () => {
 };
 
 export default Profile;
+
+

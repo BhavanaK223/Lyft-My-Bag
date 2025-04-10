@@ -88,7 +88,10 @@ export const LoginPage = () => {
                     </div>
                     </>
                 )}
-                <button type="submit">{isRegistering ? "Register" : "Login"}</button>
+                    <button type="submit">{isRegistering ? "Register" : "Login"}
+                        <Link to="/profile">Profile</Link>
+                    </button>
+                    
             </form>
             {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
             {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
