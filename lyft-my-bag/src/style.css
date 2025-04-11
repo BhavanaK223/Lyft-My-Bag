@@ -319,6 +319,23 @@
         position: relative;
     }
 
+    .home-page .Profile-button {
+        all: unset;
+        align-items: center;
+        background-color: #ffffff;
+        border: 1px solid;
+        border-color: var(--dark-green);
+        border-radius: 30px;
+        box-sizing: border-box;
+        display: inline-flex;
+        flex: 0 0 auto;
+        gap: 10px;
+        justify-content: center;
+        overflow: hidden;
+        padding: 10px 30px;
+        position: relative;
+    }
+
     .home-page .text-wrapper-5 {
         color: var(--dark-green);
         font-family: "Inter-ExtraBold", Helvetica;

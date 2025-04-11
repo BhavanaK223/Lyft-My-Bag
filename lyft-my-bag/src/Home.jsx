@@ -128,15 +128,24 @@ export const HomePage = () => {
                             <img className="img" alt="Figure" src={figure6} />
 
                             <div className="header-buttons">
-                                <button className="get-started-button">
-                                    <div className="text-wrapper-4">Get Started</div>
-                                </button>
+                               
+                                {/*Profile button class*/}
+                                <Link to="/profile" className="Profile-button">
+                                    <div className="text-wrapper-4">Profile</div>
+                                </Link>
 
-                                <button className="login-button">
-                                    <Link to="/login">Login</Link>
-                                    <Link to="/profile">Profile</Link>
-                                    <Link to="/request">Request</Link>
-                                </button>
+                                {/* Login Page*/}
+                                <Link to="/login" className="login-button">
+                                    <div className="text-wrapper-4">Login</div>
+                                </Link>
+
+                                {/*request a trip page*/}
+                                <Link to="/request" className="login-button">
+                                    <div className="text-wrapper-4">Request</div>
+                                </Link>
+
+
+
                             </div>
 
                             <div className="text-wrapper-5">LMB</div>
