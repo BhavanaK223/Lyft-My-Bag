@@ -1,5 +1,6 @@
 ﻿import React from "react";
 import { Link } from "react-router-dom";
+import { Navbar } from "./Navbar";
 import { Card } from "./Card";
 import conditions from "./conditions.png";
 import eco from "./eco.png";
@@ -127,15 +128,9 @@ export const HomePage = () => {
                         <div className="overlap-4">
                             <img className="img" alt="Figure" src={figure6} />
 
-                            <div className="header-buttons">
-                                <button className="get-started-button">
-                                    <div className="text-wrapper-4">Get Started</div>
-                                </button>
 
-                                <button className="login-button">
-                                    <Link to="/login">Login</Link>
-                                </button>
-                            </div>
+                                <Navbar />
+                                
 
                             <div className="text-wrapper-5">LMB</div>
                         </div>
