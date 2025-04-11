@@ -1,18 +1,17 @@
-.home-page {
-    background-color: #f3f8f2;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    min-height: 100vh;
-    width: 100%;
-}
+    .home-page {
+        background-color: #f3f8f2;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        min-height: 100vh;
+        width: 100%;
+    }
 
     .home-page .div {
         background-color: var(--white);
         height: auto;
         overflow: visible;
         position: relative;
-        min-height: 100vh;
         width: 100%;
     }
 
@@ -302,7 +301,24 @@
         width: fit-content;
     }
 
-    .home-page .login-button {
+    .login-button {
+        all: unset;
+        align-items: center;
+        background-color: #ffffff;
+        border: 1px solid;
+        border-color: var(--dark-green);
+        border-radius: 30px;
+        box-sizing: border-box;
+        display: inline-flex;
+        flex: 0 0 auto;
+        gap: 10px;
+        justify-content: center;
+        overflow: hidden;
+        padding: 10px 30px;
+        position: relative;
+    }
+
+    .home-page .Profile-button {
         all: unset;
         align-items: center;
         background-color: #ffffff;
@@ -374,18 +390,19 @@
         line-height: normal;
         position: relative;
     }
-.login-page {
-    align-items: flex-start;
-    background-color: var(--honeydew);
-    display: flex;
-    gap: 10px;
-    height: auto;
-    min-height: 100vh;
-    justify-content: center;
-    min-width: 1024px;
-    position: relative;
-    width: 100%;
-}
+
+    .login-page {
+        align-items: flex-start;
+        background-color: var(--honeydew);
+        display: flex;
+        gap: 10px;
+        height: auto;
+        min-height: 100vh;
+        justify-content: center;
+        min-width: 1024px;
+        position: relative;
+        width: 100%;
+    }
 
     .login-page .form-log-in {
         align-items: center;
@@ -535,4 +552,246 @@
         display: flex !important;
         flex: 0 0 auto !important;
         width: 100% !important;
+    }
+
+    .card {
+        align-items: center;
+        background-color: var(--honeydew);
+        border: 7px solid;
+        border-color: var(--dark-green);
+        border-radius: 30px;
+        display: flex;
+        flex-direction: column;
+        height: 306px;
+        justify-content: center;
+        overflow: hidden;
+        padding: 40px;
+        position: relative;
+        width: 206px;
+    }
+    
+    .card .edit-square {
+        height: 175px;
+        position: relative;
+        width: 175px;
+    }
+    
+    .card .text-wrapper {
+        align-self: stretch;
+        color: var(--black);
+        font-family: "Roboto Mono-Regular", Helvetica;
+        font-size: 24px;
+        font-weight: 400;
+        letter-spacing: 0;
+        line-height: normal;
+        position: relative;
+        text-align: center;
+    }
+    
+    .profile {
+        background-color: #f3f8f2;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .profile .div-2 {
+        background-color: var(--white);
+        height: 1024px;
+        position: relative;
+        width: 1440px;
+    }
+
+    .profile .messages-block {
+        align-items: flex-start;
+        background-color: #ffffff;
+        border: 1px solid;
+        border-color: #d9d9d9;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        height: 505px;
+        left: 130px;
+        overflow: hidden;
+        padding: 24px;
+        position: absolute;
+        top: 335px;
+        width: 568px;
+    }
+
+    .profile .text-wrapper-2 {
+        align-self: stretch;
+        color: var(--color-text-default-default);
+        font-family: var(--heading-font-family);
+        font-size: var(--heading-font-size);
+        font-style: var(--heading-font-style);
+        font-weight: var(--heading-font-weight);
+        letter-spacing: var(--heading-letter-spacing);
+        line-height: var(--heading-line-height);
+        margin-top: -1.00px;
+        position: relative;
+    }
+
+    .profile .avatar-block-2 {
+        align-items: center;
+        align-self: stretch;
+        display: flex;
+        gap: var(--size-space-300);
+        height: 40px;
+        position: relative;
+        width: 100%;
+    }
+
+    .profile .design-component-instance-node {
+        left: 12px !important;
+    }
+
+    .profile .div-wrapper {
+        align-items: flex-start;
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        flex-grow: 1;
+        gap: var(--size-space-050);
+        position: relative;
+    }
+
+    .profile .text-wrapper-3 {
+        align-self: stretch;
+        color: var(--color-text-default-secondary);
+        font-family: var(--body-strong-font-family);
+        font-size: var(--body-strong-font-size);
+        font-style: var(--body-strong-font-style);
+        font-weight: var(--body-strong-font-weight);
+        letter-spacing: var(--body-strong-letter-spacing);
+        line-height: var(--body-strong-line-height);
+        margin-top: -1.00px;
+        position: relative;
+    }
+
+    .profile .profile-block {
+        align-items: flex-start;
+        background-color: #ffffff;
+        border: 1px solid;
+        border-color: var(--color-border-default-default);
+        border-radius: var(--size-radius-200);
+        display: flex;
+        flex-direction: column;
+        gap: var(--size-space-600);
+        left: 130px;
+        padding: var(--size-space-600);
+        position: absolute;
+        top: 112px;
+        width: 568px;
+    }
+
+    .profile .design-component-instance-node-2 {
+        align-self: stretch !important;
+        display: flex !important;
+        flex: 0 0 auto !important;
+        width: 100% !important;
+    }
+
+    .profile .text-heading-instance {
+        flex: 1 !important;
+        white-space: unset !important;
+        width: unset !important;
+    }
+
+    .profile .design-component-instance-node-3 {
+        align-self: stretch !important;
+        flex: 0 0 auto !important;
+        width: 100% !important;
+    }
+
+    .profile .avatar-block-instance {
+        gap: var(--size-space-050) !important;
+    }
+
+    .profile .text-wrapper-4 {
+        color: var(--dark-green);
+        font-family: "Inter-ExtraBold", Helvetica;
+        font-size: 64px;
+        font-weight: 800;
+        left: 28px;
+        letter-spacing: 0;
+        line-height: normal;
+        position: absolute;
+        top: -1px;
+    }
+
+    .profile .right-display {
+        align-items: flex-start;
+        display: flex;
+        flex-direction: column;
+        gap: 35px;
+        left: 740px;
+        padding: 15px 2px;
+        position: absolute;
+        top: 97px;
+        width: 572px;
+    }
+
+    .profile .div-3 {
+        align-items: flex-start;
+        align-self: stretch;
+        background-color: #ffffff;
+        border: 1px solid;
+        border-color: #d9d9d9;
+        border-radius: 8px;
+        display: flex;
+        flex: 0 0 auto;
+        flex-direction: column;
+        gap: 24px;
+        overflow: hidden;
+        padding: 24px;
+        position: relative;
+        width: 100%;
+    }
+
+    .profile .button-instance {
+        background-color: var(--dark-green) !important;
+        opacity: 0.9 !important;
+    }
+
+    .profile .button-2 {
+        font-family: var(--button-font-family) !important;
+        font-size: var(--button-font-size) !important;
+        font-style: var(--button-font-style) !important;
+        font-weight: var(--button-font-weight) !important;
+        letter-spacing: var(--button-letter-spacing) !important;
+        line-height: var(--button-line-height) !important;
+        margin-top: -1.50px !important;
+        white-space: unset !important;
+    }
+
+    .profile .text-wrapper-5 {
+        color: #000000;
+        font-family: var(--small-text-font-family);
+        font-size: var(--small-text-font-size);
+        font-style: var(--small-text-font-style);
+        font-weight: var(--small-text-font-weight);
+        letter-spacing: var(--small-text-letter-spacing);
+        line-height: var(--small-text-line-height);
+        position: relative;
+        width: 193px;
+    }
+
+    .profile .recent-trips-block {
+        align-items: flex-end;
+        align-self: stretch;
+        background-color: #ffffff;
+        border: 1px solid;
+        border-color: #d9d9d9;
+        border-radius: 8px;
+        display: flex;
+        flex: 0 0 auto;
+        flex-direction: column;
+        gap: 24px;
+        overflow: hidden;
+        padding: 24px;
+        position: relative;
+        width: 100%;
     }
