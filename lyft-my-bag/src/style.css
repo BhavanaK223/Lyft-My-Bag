@@ -302,7 +302,7 @@
         width: fit-content;
     }
 
-    .home-page .login-button {
+    .login-button {
         all: unset;
         align-items: center;
         background-color: #ffffff;

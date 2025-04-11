@@ -128,7 +128,8 @@ export const HomePage = () => {
                             <img className="img" alt="Figure" src={figure6} />
 
                             <div className="header-buttons">
-                               
+                                
+
                                 {/*Profile button class*/}
                                 <Link to="/profile" className="Profile-button">
                                     <div className="text-wrapper-4">Profile</div>
@@ -139,7 +140,7 @@ export const HomePage = () => {
                                     <div className="text-wrapper-4">Login</div>
                                 </Link>
 
-                                {/*request a trip page*/}
+
                                 <Link to="/request" className="login-button">
                                     <div className="text-wrapper-4">Request</div>
                                 </Link>

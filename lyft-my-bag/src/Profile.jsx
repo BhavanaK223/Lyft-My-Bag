@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { Navbar } from "./Navbar";
+import "./style.css";
 import { TextLink } from "./TextLink";
 
 export const Profile = () => {
@@ -24,21 +26,22 @@ export const Profile = () => {
     return(
         <div className="page">
             <div> {/* Create Navbar jsx file to make nav bar consistent => call function each page */}
- <Link to="/">Go to Home Page </Link>
-                {/*<Link to="/login">Login </Link>
-                <Link to="/profile">Profile </Link>*/}
-  </div>
+                <Navbar />
+            </div>
             {user ? (
                 <>
                     <h2>Welcome, {user.firstName} {user.lastName}!</h2>
                     <p>Email: {user.email}</p>
-                    <Link to="/request">Request a Ride</Link><br />
+                    <Link to="/request" className="login-button">
+                        <div className="text-wrapper-4">Request a Ride</div>
+                    </Link>
+
                     <button onClick={handleLogout}>Logout</button>
                 </>
             ) : (
                 <>
-                    <h2>You are not logged in</h2>
-                    <a href="/login">Go to Login</a>
+                        <h2>You are not logged in</h2>
+                    
                 </>
             )}
         </div>
