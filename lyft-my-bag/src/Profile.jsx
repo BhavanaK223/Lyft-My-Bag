@@ -25,7 +25,7 @@ export const Profile = () => {
 
     return(
         <div className="page">
-            <div> {/* Create Navbar jsx file to make nav bar consistent => call function each page */}
+            <div> {/* need help getting the buttons to go in the header on other pages. it works on the home page */}
                 <Navbar />
             </div>
             {user ? (

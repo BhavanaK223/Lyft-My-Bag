@@ -17,13 +17,7 @@ export const HomePage = () => {
         <div className="home-page">
             <div className="landing">
                 <header className="header">
-                    <div className="overlap-group-3">
-                        <img className="header-img" alt="green wavy header" src={figure6} />
-
-                        <div className="text-wrapper-6">LMB</div>
-
-                        <Navbar />
-                    </div>
+                    <Navbar />
                 </header>
 
                 <img className="gator-blur" alt="Gator blur" src={gatorBlur2} />
