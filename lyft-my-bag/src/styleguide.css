@@ -1,0 +1,38 @@
+:root {
+    --black: rgba(16, 27, 14, 1);
+    --blue: rgba(91, 123, 174, 1);
+    --button-font-family: "Roboto Mono", Helvetica;
+    --button-font-size: 16px;
+    --button-font-style: normal;
+    --button-font-weight: 400;
+    --button-letter-spacing: 0px;
+    --button-line-height: normal;
+    --dark-green: rgba(53, 95, 48, 1);
+    --heading-font-family: "Inter", Helvetica;
+    --heading-font-size: 128px;
+    --heading-font-style: normal;
+    --heading-font-weight: 800;
+    --heading-letter-spacing: 0px;
+    --heading-line-height: normal;
+    --honeydew: rgba(234, 241, 228, 1);
+    --light-green: rgba(130, 173, 92, 1);
+    --paragraph-font-family: "Roboto Mono", Helvetica;
+    --paragraph-font-size: 36px;
+    --paragraph-font-style: normal;
+    --paragraph-font-weight: 400;
+    --paragraph-letter-spacing: 0px;
+    --paragraph-line-height: normal;
+    --small-text-font-family: "Roboto Mono", Helvetica;
+    --small-text-font-size: 16px;
+    --small-text-font-style: normal;
+    --small-text-font-weight: 400;
+    --small-text-letter-spacing: 0px;
+    --small-text-line-height: normal;
+    --sub-heading-font-family: "Roboto", Helvetica;
+    --sub-heading-font-size: 64px;
+    --sub-heading-font-style: normal;
+    --sub-heading-font-weight: 700;
+    --sub-heading-letter-spacing: 0px;
+    --sub-heading-line-height: normal;
+    --white: rgba(243, 248, 242, 1);
+}

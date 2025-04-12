@@ -73,6 +73,18 @@ def register():
 
     return jsonify({"message": "User registered successfully"}), 201
 
+#
+@app.route('/offer', methods=['POST'])
+def get_users():
+    data = request.get_json()
+    print()
+    print(data)
+    print()
+
+    # Get user details from the request
+    
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
