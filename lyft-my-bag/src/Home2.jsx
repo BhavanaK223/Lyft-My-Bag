@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Card } from "./Card";
+import { Navbar } from "./Navbar";
 import conditions from "./conditions.png";
 import eco from "./eco.png";
 import figure2 from "./figure-2.png";
@@ -16,21 +17,7 @@ export const HomePage = () => {
         <div className="home-page">
             <div className="landing">
                 <header className="header">
-                    <div className="overlap-group-3">
-                        <img className="header-img" alt="green wavy header" src={figure6} />
-
-                        <div className="text-wrapper-6">LMB</div>
-
-                        <div className="header-buttons">
-                            <button className="get-started-button">
-                                <div className="text-wrapper-5">Get Started</div>
-                            </button>
-
-                            <button className="login-button">
-                                <div className="text-wrapper-2">Login</div>
-                            </button>
-                        </div>
-                    </div>
+                    <Navbar />
                 </header>
 
                 <img className="gator-blur" alt="Gator blur" src={gatorBlur2} />
