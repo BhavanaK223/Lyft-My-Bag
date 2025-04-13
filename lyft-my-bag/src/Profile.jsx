@@ -25,9 +25,7 @@ export const Profile = () => {
 
     return(
         <div className="page">
-            <div> {/* Create Navbar jsx file to make nav bar consistent => call function each page */}
-                <Navbar />
-            </div>
+            <div><Navbar /></div>
             {user ? (
                 <>
                     <h2>Welcome, {user.firstName} {user.lastName}!</h2>
@@ -200,7 +198,7 @@ export const Dashboard = () => {
                         <TripDisplay
                             className="design-component-instance-node-3"
                             text="3/8"
-                            text1="Trader Joe’s"
+                            text1="Trader Joeï¿½s"
                             textLinkText="Rate Trip"
                         />
                     </div>
