@@ -26,7 +26,7 @@ def login():
         return jsonify({"error": "Email and password are required"}), 400
 
     # Check if the user exists in the 'users' collection
-    user = mongo.db.users.find_one({'email': email})  # ERROR: Connection issue?
+    user = mongo.db.users.find_one({'email': email}) 
 
     if not user or user['password'] != password:
         return jsonify({"error": "Invalid email or password"}), 401

@@ -1,7 +1,8 @@
 ﻿import React, {useEffect, useState} from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from 'react-hook-form';
-import { TextLink } from "./TextLink";
+import gatorBlur2 from "./public/gator-blur-2.png";
+import "./style.css";
 
 
 const RequestOffer = () => {
@@ -22,18 +23,73 @@ const RequestOffer = () => {
       setTime(event.target.value);
     };
 
-    const { register, handleSubmit, reset } = useForm();
+    const [errorMessage, setErrorMessage] = useState('');
+    const [successMessage, setSuccessMessage] = useState('');
 
-    const onSubmit = (data) => {
+    const { reset } = useForm();
+    const [formData, setFormData] = useState({
+        date: "",
+        time: "",
+        duration: "",
+        durationType: "",
+        destinationType: "",
+        destinationName: "",
+        address: "",
+        compensation: "",
+        seatsAvailable: "", 
+        additionalNotes: ""
+    });
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = async (e) => {
         // Handle form submission logic here
-        console.log(data);
-        // Reset the form after submission
-        //navigate('/profile'); // Redirect to profile page after submission
+        e.preventDefault();
+
+        const url = "http://localhost:5000/offer";
+        const payload = {
+            date: formData.date,
+            time: formData.time,  
+            duration: formData.duration,
+            durationType: formData.durationType,
+            destinationType: formData.destinationType,
+            destinationName: formData.destinationName,
+            address: formData.address,
+            compensation: formData.compensation,
+            seatsAvailable: formData.seatsAvailable,
+            additionalNotes: formData.additionalNotes  
+        };
+
+        try {
+            const response = await fetch(url, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload),
+            });
+
+            const result = await response.json();
+  
+            if (response.ok) {
+              // Login successful
+              setSuccessMessage(result.message);
+              setErrorMessage('');
+                localStorage.setItem("user", JSON.stringify(result.user)); // Store user data
+                navigate("/offer-board"); // Redirect to dashboard
+
+            } else {
+              // Error handling
+              setErrorMessage(result.error || 'An unknown error occurred');
+              setSuccessMessage('');
+            }
+          } catch (error) {
+            setErrorMessage('Failed to connect to the server');
+            setSuccessMessage('');
+          }
     }
 
-    //const resetForm = () => {
-    //    reset();
-    //};
+
 
     return (
 
@@ -43,28 +99,23 @@ const RequestOffer = () => {
                 <Link to="/profile">Profile</Link><br />
                 <Link to="/request">Request</Link><br />
             </div>
-
-            {/* <img src="https://www.shutterstock.com/image-vector/cute-crocodile-business-holding-suitcase-600nw-2223279211.jpg"
-                width="200"
-                height="200"
-            /> */}
              {user ? (
                 <>
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <form onSubmit={handleSubmit}>
                     <h2>Create New Trip</h2>
                     <label>Date:</label><br />
-                        <input type="text" id="date" name="date" placeholder="MM/DD/YYYY"/><br />
+                        <input type="text" id="date" name="date" placeholder="MM/DD/YYYY"  onChange={handleChange} required/><br />
                     <label>Time:</label><br />
-                        <input type="time" id="time" value={time} onChange={handleTimeChange} /><br />
+                        <input type="time" id="time" name="time" value={time} onChange={handleTimeChange} required/><br />
                     <label>Expected Duration:</label><br />
-                    <input type="number" id="duration" name="duration" placeholder="2"/>
-                        <select id="myDropdown">
+                    <input type="number" id="duration" name="duration" placeholder="2"  onChange={handleChange} required/>
+                        <select id="myDropdown" name="durationType"  onChange={handleChange} required>
                             <option value="">Select...</option>
                             <option value="time1">Minutes</option>
                             <option value="time2">Hours</option>
                         </select><br />
                     <label htmlFor="fname">Destination Type:</label><br />
-                    <select id="myDropdown">
+                    <select id="myDropdown" name="destinationType"  onChange={handleChange} required>
                         <option value="">Select...</option>
                         <option value="grocery">Grocery</option>
                         <option value="library">Library</option>
@@ -76,17 +127,18 @@ const RequestOffer = () => {
                         <option value="option5">Other</option>
                     </select><br />
                     <label htmlFor="fname">Destination Name:</label><br />
-                        <input type="text" id="destinationName" name="destinationName" /><br />
+                        <input type="text" id="destinationName" name="destinationName" onChange={handleChange} required/><br />
                     <label htmlFor="lname">Address:</label><br />
-                        <input type="text" id="address" name="address" placeholder="EX) 123 Main St., Gainesville"/><br />
+                        <input type="text" id="address" name="address" placeholder="EX) 123 Main St., Gainesville" onChange={handleChange} required/><br />
                     <label htmlFor="lname">How much would you like to be compensated for gas ($)</label><br />
-                        <input type="text" id="compensation" name="compensation" /><br />
+                        <input type="text" id="compensation" name="compensation"  onChange={handleChange} required /><br />
                     <label htmlFor="lname">How many seats are available:</label><br />
-                        <input type="number" id="seatsAvailable" name="seatsAvailable" placeholder="2"/><br />
+                        <input type="number" id="seatsAvailable" name="seatsAvailable" placeholder="2"  onChange={handleChange} required/><br />
                     <label htmlFor="lname">Additional Notes:</label><br />
-                        <input type="text" id="additionalNotes" name="additionalNotes" placeholder="Optional Text"/><br />
-                        <button type="button" onClick={() => reset()}>Cancel x</button>
-                        <button type="submit">Submit Form</button>
+                        <input type="text" id="additionalNotes" name="additionalNotes" placeholder="Optional Text"  onChange={handleChange}/><br />
+                    <button type="submit">Submit</button>
+                    {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+                    {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
                 </form>
                 </>
             ) : (

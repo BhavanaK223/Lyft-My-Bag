@@ -28,6 +28,11 @@ export const Navbar = ({ className = "" }) => {
                                     </Link>
                         </div>
 
+            {/*offer board page*/}
+            <Link to="/offer-board" className="login-button">
+                <div className="text-wrapper-4">Offer Board</div>
+            </Link>
+
         </div>
     )
 };

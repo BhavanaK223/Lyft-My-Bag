@@ -4,6 +4,7 @@ import HomePage from "./Home2";
 import LoginPage from "./Login";
 import Profile from "./Profile";
 import RequestOffer from "./RequestOffer";
+import { OfferBoard } from "./OfferBoard";
 
 const App = () => {
     return (
@@ -13,6 +14,7 @@ const App = () => {
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/request" element={<RequestOffer />} />
+                <Route path="/offer-board" element={<OfferBoard />} />
             </Routes>
         </Router>
     );

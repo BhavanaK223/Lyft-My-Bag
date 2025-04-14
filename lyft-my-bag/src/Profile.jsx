@@ -25,9 +25,13 @@ export const Profile = () => {
 
     return(
         <div className="page">
+<<<<<<< HEAD
+            <div><Navbar /></div>
+=======
             <div> {/* need help getting the buttons to go in the header on other pages. it works on the home page */}
                 <Navbar />
             </div>
+>>>>>>> cdba3f11841d884a641a0bac3edd3bb1371561cc
             {user ? (
                 <>
                     <h2>Welcome, {user.firstName} {user.lastName}!</h2>
@@ -200,7 +204,7 @@ export const Dashboard = () => {
                         <TripDisplay
                             className="design-component-instance-node-3"
                             text="3/8"
-                            text1="Trader Joe’s"
+                            text1="Trader Joeï¿½s"
                             textLinkText="Rate Trip"
                         />
                     </div>
