@@ -73,6 +73,26 @@ def register():
 
     return jsonify({"message": "User registered successfully"}), 201
 
+@app.route('/profile', methods=['POST'])
+def get_profile():
+    data = request.get_json()
+
+    if not data or 'email' not in data:
+        return jsonify({"error": "Email is required"}), 400
+
+    email = data['email']
+    user = mongo.db.users.find_one({'email': email})
+
+    if not user:
+        return jsonify({"error": "User not found"}), 404
+
+    return jsonify({
+        "firstName": user['firstName'],
+        "lastName": user['lastName'],
+        "email": user['email']
+    }), 200
+
+
 #
 @app.route('/offer', methods=['POST'])
 def get_users():

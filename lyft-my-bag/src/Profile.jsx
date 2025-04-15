@@ -3,18 +3,51 @@ import { Link, useNavigate } from "react-router-dom";
 import { Navbar } from "./Navbar";
 import "./style.css";
 import { TextLink } from "./TextLink";
+import { set } from "react-hook-form";
 
 export const Profile = () => {
     //const [activeTab, setActiveTab] = useState('Profile');
     const [user, setUser] = useState(null);
     const navigate = useNavigate();
 
+    // useEffect(() => {
+    //     const storedUser = localStorage.getItem('user');
+    //     if(storedUser) {
+    //         setUser(JSON.parse(storedUser));
+    //     }
+    //     setLoading(false);
+    // }, []);
     useEffect(() => {
         const storedUser = localStorage.getItem('user');
-        if(storedUser) {
-            setUser(JSON.parse(storedUser));
+        if (storedUser) {
+            const email = JSON.parse(storedUser).email;
+    
+            fetch("http://localhost:5000/profile", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ email })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.error) {
+                    console.error(data.error);
+                    setUser(null);
+                } else {
+                    setUser(data);
+                }
+                setLoading(false);
+            })
+            .catch((err) => {
+                console.error('Error fetching profile:', err);
+                setLoading(false);
+            });
+        }else{
+            setLoading(false);
         }
     }, []);
+    
 
     const handleLogout = () => {
         localStorage.removeItem('user');
@@ -25,22 +58,39 @@ export const Profile = () => {
 
     return(
         <div className="page">
-<<<<<<< HEAD
             <div><Navbar /></div>
-=======
-            <div> {/* need help getting the buttons to go in the header on other pages. it works on the home page */}
-                <Navbar />
-            </div>
->>>>>>> cdba3f11841d884a641a0bac3edd3bb1371561cc
             {user ? (
                 <>
-                    <h2>Welcome, {user.firstName} {user.lastName}!</h2>
+                    {/* <h2>Welcome, {user.firstName} {user.lastName}!</h2>
                     <p>Email: {user.email}</p>
                     <Link to="/request" className="login-button">
                         <div className="text-wrapper-4">Request a Ride</div>
-                    </Link>
+                    </Link> */}
 
                     <button onClick={handleLogout}>Logout</button>
+                    <div className="dashboard">
+                        <div className="dashboard-left">
+                            <div className="card profile-card">Profile
+                                <p>{user.firstName} {user.lastName}</p>
+                                <a href="#">Profile Settings</a>
+                            </div>
+                            <div className="card messages-card">Messages</div>
+                        </div>
+                        <div className="dashboard-right">
+                            <div className="card trips-driver-card">Upcoming Trips (Driver)
+                                <Link to="/request" className="login-button">
+                                    <div className="text-wrapper-4">Create New Trip</div>
+                                </Link>
+                            </div>
+                            <div className="card trips-passenger-card">Upcoming Trips (Passenger)
+                                <Link to="/offer-board" className="login-button">
+                                    <div className="text-wrapper-4">Find a Ride</div>
+                                </Link>
+                            </div>
+                            <div className="card recent-trips-card">Recent Trips</div>
+                        </div>
+                    </div>
+
                 </>
             ) : (
                 <>
