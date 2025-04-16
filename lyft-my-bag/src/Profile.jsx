@@ -94,7 +94,7 @@ export const Profile = () => {
                 </>
             ) : (
                 <>
-                        <h2>You are not logged in</h2>
+                     <h2>You are not logged in</h2>
                     
                 </>
             )}
