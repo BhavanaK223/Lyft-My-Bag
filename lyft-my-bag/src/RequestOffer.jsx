@@ -1,8 +1,9 @@
-﻿import React, {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from 'react-hook-form';
+import { Navbar } from "./Navbar";
 import gatorBlur2 from "./public/gator-blur-2.png";
-import "./style.css";
+import "./RequestOffer.css";
 
 
 const RequestOffer = () => {
@@ -16,6 +17,7 @@ const RequestOffer = () => {
         }
     }, []);
   
+
     //Handle Time Change
     // const [time, setTime] = useState('');
     // const handleTimeChange = (event) => {
@@ -78,54 +80,100 @@ const RequestOffer = () => {
     };
 
 
-
     return (
 
         <div>
-            <div>          
+            {/* <div>          
                 <Link to="/login">Login</Link><br />
                 <Link to="/profile">Profile</Link><br />
                 <Link to="/request">Request</Link><br />
-            </div>
+            </div> */}
              {user ? (
                 <>
-                <form onSubmit={handleSubmit}>
-                    <h2>Create New Trip</h2>
-                    <label>Date:</label><br />
-                        <input type="text" id="date" name="date" placeholder="MM/DD/YYYY"  onChange={handleChange} required/><br />
-                    <label>Time:</label><br />
-                        <input type="time" id="time" name="time" onChange={handleChange} required/><br />
-                    <label>Expected Duration:</label><br />
-                    <input type="number" id="duration" name="duration" placeholder="2"  onChange={handleChange} required/>
-                        <select id="myDropdown" name="durationType"  onChange={handleChange} required>
-                            <option value="">Select...</option>
-                            <option value="minutes">Minutes</option>
-                            <option value="hours">Hours</option>
-                        </select><br />
-                    <label htmlFor="fname">Destination Type:</label><br />
-                    <select id="myDropdown" name="destinationType"  onChange={handleChange} required>
-                        <option value="">Select...</option>
-                        <option value="grocery">Grocery</option>
-                        <option value="library">Library</option>
-                        <option value="gym">Gym</option>
-                        <option value="airport">Airport</option>
-                        <option value="hostpital">Hospital/Doctor</option>
-                        <option value="school">School</option>
-                        <option value="downtown">Downtown</option>
-                        <option value="option5">Other</option>
-                    </select><br />
-                    <label htmlFor="fname">Destination Name:</label><br />
-                        <input type="text" id="destinationName" name="destinationName" onChange={handleChange} required/><br />
-                    <label htmlFor="lname">Address:</label><br />
-                        <input type="text" id="address" name="address" placeholder="EX) 123 Main St., Gainesville" onChange={handleChange} required/><br />
-                    <label htmlFor="lname">How much would you like to be compensated for gas ($)</label><br />
-                        <input type="text" id="compensation" name="compensation"  onChange={handleChange} required /><br />
-                    <label htmlFor="lname">How many seats are available:</label><br />
-                        <input type="number" id="seatsAvailable" name="seatsAvailable" placeholder="2"  onChange={handleChange} required/><br />
-                    <label htmlFor="lname">Additional Notes:</label><br />
-                        <input type="text" id="additionalNotes" name="additionalNotes" placeholder="Optional Text"  onChange={handleChange}/><br />
-                    <button type="submit">Submit</button>
-                </form>
+                <div className="create-new-trip">
+                    <div className="trip-form">
+                        <h2 className="legend div">Create New Trip</h2>
+                        <form onSubmit={handleSubmit}>
+                            <div className="frame">
+                                <div className="div-2">
+                                    <label className="text-wrapper-2">Date:</label>
+                                    <input className="input" type="text" id="date" name="date" placeholder="MM/DD/YYYY"  onChange={handleChange} required/>
+                                </div>
+
+                                <div className="div-2">
+                                    <label className="text-wrapper-2">Time:</label>
+                                    <input className="select" type="time" id="time" name="time" onChange={handleChange} required/>
+                                </div>
+
+                                <div className="div-2">
+                                    <label className="text-wrapper-2">Expected Duration (hrs):</label>
+                                    <input className="input" type="number" id="duration" name="duration" placeholder="2"  onChange={handleChange} required/>
+                                    {/* <select id="myDropdown" name="durationType"  onChange={handleChange} required>
+                                        <option value="">Select...</option>
+                                        <option value="time1">Minutes</option>
+                                        <option value="time2">Hours</option>
+                                    </select> */}
+                                </div>
+                            </div>
+                            
+                            <div className="frame">
+                                <div className="div-3">
+                                    <label htmlFor="fname">Destination Type:</label>
+                                    <select className="select-2" id="myDropdown" name="destinationType"  onChange={handleChange} required>
+                                        <option value="">Select...</option>
+                                        <option value="grocery">Grocery</option>
+                                        <option value="library">Library</option>
+                                        <option value="gym">Gym</option>
+                                        <option value="airport">Airport</option>
+                                        <option value="hostpital">Hospital/Doctor</option>
+                                        <option value="school">School</option>
+                                        <option value="downtown">Downtown</option>
+                                        <option value="option5">Other</option>
+                                    </select>
+                                </div>
+
+                                <div className="div-3">
+                                    <label htmlFor="fname">Destination Name:</label>
+                                    <input type="text" id="destinationName" name="destinationName" onChange={handleChange} required/>
+                                </div>
+                            </div>
+                            
+                            <div className="div-4">
+                                <label htmlFor="lname">Address:</label>
+                                <input type="text" id="address" name="address" placeholder="EX) 123 Main St., Gainesville" onChange={handleChange} required/>
+                            </div>
+
+                            <div className="frame">
+                                <div className="div-3">
+                                    <label htmlFor="lname">Gas Compensation ($)</label>
+                                    <input type="text" id="compensation" name="compensation" placeholder="0+"  onChange={handleChange} required />
+                                </div>
+
+                                <div className="div-3">
+                                    <label htmlFor="lname">How many seats are available:</label>
+                                    <input type="number" id="seatsAvailable" name="seatsAvailable" placeholder="2"  onChange={handleChange} required/>
+                                </div>
+                            </div>
+
+                            <div className="div-4">
+                                <label htmlFor="lname">Additional Notes:</label>
+                                <input type="text" id="additionalNotes" name="additionalNotes" placeholder="Optional Text"  onChange={handleChange}/>
+                            </div>
+                            
+                            <div className="button-group">
+                                <Link to="/profile" className="button">
+                                    <button className="button-2">Cancel</button>
+                                </Link>
+                                
+                                <div className="button-wrapper">
+                                    <button className="button-3" type="submit">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    
+                </div>
+                
                 </>
             ) : (
                 <>

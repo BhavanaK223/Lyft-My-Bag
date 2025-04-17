@@ -1,10 +1,8 @@
 ﻿import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { TextLink } from "./TextLink";
 import gatorBlur2 from "./public/gator-blur-2.png";
 import "./Login.css";
-import "./styleguide.css";
 
 export const LoginPage = () => {
     const [isRegistering, setIsRegistering] = useState(false);
@@ -50,6 +48,7 @@ export const LoginPage = () => {
               setErrorMessage('');
               if (!isRegistering) {
                 localStorage.setItem("user", JSON.stringify(result.user)); // Store user data
+                print(result.user); // Print user data to console
                 navigate("/profile"); // Redirect to dashboard
               }
             } else {
