@@ -1,12 +1,45 @@
 :root {
     --black: rgba(16, 27, 14, 1);
     --blue: rgba(91, 123, 174, 1);
+    --body-base-font-family: "Inter", Helvetica;
+    --body-base-font-size: 16px;
+    --body-base-font-style: normal;
+    --body-base-font-weight: 400;
+    --body-base-letter-spacing: 0px;
+    --body-base-line-height: 139.9999976158142%;
+    --body-link-font-family: "Inter", Helvetica;
+    --body-link-font-size: 16px;
+    --body-link-font-style: normal;
+    --body-link-font-weight: 400;
+    --body-link-letter-spacing: 0px;
+    --body-link-line-height: 139.9999976158142%;
     --button-font-family: "Roboto Mono", Helvetica;
     --button-font-size: 16px;
     --button-font-style: normal;
     --button-font-weight: 400;
     --button-letter-spacing: 0px;
     --button-line-height: normal;
+    --color-background-brand-default: var(--color-primitives-brand-800);
+    --color-background-brand-hover: var(--color-primitives-brand-900);
+    --color-background-default-default: var(--color-primitives-white-1000);
+    --color-border-brand-default: var(--color-primitives-brand-800);
+    --color-border-default-default: var(--color-primitives-gray-300);
+    --color-primitives-brand-100: rgba(245, 245, 245, 1);
+    --color-primitives-brand-300: rgba(217, 217, 217, 1);
+    --color-primitives-brand-800: rgba(44, 44, 44, 1);
+    --color-primitives-brand-900: rgba(30, 30, 30, 1);
+    --color-primitives-gray-300: rgba(217, 217, 217, 1);
+    --color-primitives-gray-400: rgba(179, 179, 179, 1);
+    --color-primitives-gray-600: rgba(68, 68, 68, 1);
+    --color-primitives-gray-900: rgba(30, 30, 30, 1);
+    --color-primitives-slate-200: rgba(227, 227, 227, 1);
+    --color-primitives-slate-900: rgba(48, 48, 48, 1);
+    --color-primitives-white-1000: rgba(255, 255, 255, 1);
+    --color-primitives-white-400: rgba(255, 255, 255, 0.4);
+    --color-text-brand-on-brand: var(--color-primitives-brand-100);
+    --color-text-default-default: var(--color-primitives-gray-900);
+    --color-text-default-tertiary: var(--color-primitives-gray-400);
+    --color-text-neutral-default: var(--color-primitives-slate-900);
     --dark-green: rgba(53, 95, 48, 1);
     --heading-font-family: "Inter", Helvetica;
     --heading-font-size: 128px;
@@ -22,6 +55,16 @@
     --paragraph-font-weight: 400;
     --paragraph-letter-spacing: 0px;
     --paragraph-line-height: normal;
+    --single-line-body-base-font-family: "Inter", Helvetica;
+    --single-line-body-base-font-size: 16px;
+    --single-line-body-base-font-style: normal;
+    --single-line-body-base-font-weight: 400;
+    --single-line-body-base-letter-spacing: 0px;
+    --single-line-body-base-line-height: 100%;
+    --size-radius-200: 8px;
+    --size-space-200: 8px;
+    --size-space-300: 12px;
+    --size-space-400: 16px;
     --small-text-font-family: "Roboto Mono", Helvetica;
     --small-text-font-size: 16px;
     --small-text-font-style: normal;
@@ -35,4 +78,4 @@
     --sub-heading-letter-spacing: 0px;
     --sub-heading-line-height: normal;
     --white: rgba(243, 248, 242, 1);
-}
+    }

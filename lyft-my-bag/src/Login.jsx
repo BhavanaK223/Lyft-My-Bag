@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { TextLink } from "./TextLink";
 import gatorBlur2 from "./public/gator-blur-2.png";
-import "./style.css";
+import "./Login.css";
+import "./styleguide.css";
 
 export const LoginPage = () => {
     const [isRegistering, setIsRegistering] = useState(false);
@@ -65,9 +66,8 @@ export const LoginPage = () => {
     return (
         <div className ="login-page">
           <div className="form-log-in">
-            <img className="gator-blur" alt="Gator blur" src={gatorBlur2} />
-            <Link to="/">Go to Home Page </Link>
-            <h2>{isRegistering ? "Welcome Back!" : "Create an Account"}</h2>
+            <img className="gator-blur" alt="waving gator mascot" src={gatorBlur2} />
+            <h2 className="div">{isRegistering ? "Create an Account" : "Welcome Back!"}</h2>
             <div className="p">Please enter your information below:</div>
             <form onSubmit={handleSubmit}>
                 {isRegistering ? (
@@ -88,19 +88,22 @@ export const LoginPage = () => {
                     <div className="input-field">
                         <label>Email</label>
                         <input type="text" name="email" placeholder="example@ufl.edu" onChange={handleChange} required />
+                    </div>
+                    <div className="input-field">
                         <label>Password</label>
                         <input type="text" name="password" placeholder="Password" onChange={handleChange} required />
                     </div>
                     </>
                 )}
-                    <button type="submit">{isRegistering ? "Register" : "Login"}</button>
+                    <button className="button" type="submit">{isRegistering ? "Sign Up" : "Sign In"}</button>
                     
             </form>
             {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
             {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
-            <button onClick={toggleForm}>
+            <Link onClick={toggleForm}>
                 {isRegistering ? "Already have an account? Login" : "Don't have an account? Register"}
-            </button>
+            </Link>
+            <Link to="/">Return to Home </Link>
           </div>
         </div>
     );
