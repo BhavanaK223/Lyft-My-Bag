@@ -102,6 +102,7 @@ def create_trip():
 
     trip = {
         # "user_id": ObjectId(user_id),
+        "email": data.get("email"),
         "date": data.get("date"),
         "time": data.get("time"),
         "duration": data.get("duration"),

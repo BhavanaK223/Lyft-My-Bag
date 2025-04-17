@@ -17,10 +17,10 @@ const RequestOffer = () => {
     }, []);
   
     //Handle Time Change
-    const [time, setTime] = useState('');
-    const handleTimeChange = (event) => {
-      setTime(event.target.value);
-    };
+    // const [time, setTime] = useState('');
+    // const handleTimeChange = (event) => {
+    //   setTime(event.target.value);
+    // };
 
     const { reset } = useForm();
     const [tripData, setTripData] = useState({
@@ -44,6 +44,7 @@ const RequestOffer = () => {
         e.preventDefault();
         const url = "http://localhost:5000/requests";
         const payload = {
+            email: user.email,
             date: tripData.date,
             time: tripData.time,
             duration: tripData.duration,
@@ -93,13 +94,13 @@ const RequestOffer = () => {
                     <label>Date:</label><br />
                         <input type="text" id="date" name="date" placeholder="MM/DD/YYYY"  onChange={handleChange} required/><br />
                     <label>Time:</label><br />
-                        <input type="time" id="time" name="time" value={time} onChange={handleTimeChange} required/><br />
+                        <input type="time" id="time" name="time" onChange={handleChange} required/><br />
                     <label>Expected Duration:</label><br />
                     <input type="number" id="duration" name="duration" placeholder="2"  onChange={handleChange} required/>
                         <select id="myDropdown" name="durationType"  onChange={handleChange} required>
                             <option value="">Select...</option>
-                            <option value="time1">Minutes</option>
-                            <option value="time2">Hours</option>
+                            <option value="minutes">Minutes</option>
+                            <option value="hours">Hours</option>
                         </select><br />
                     <label htmlFor="fname">Destination Type:</label><br />
                     <select id="myDropdown" name="destinationType"  onChange={handleChange} required>
@@ -132,7 +133,6 @@ const RequestOffer = () => {
                     <a href="/login">Go to Login</a>
                 </>
             )}
-
 
         </div>
     );
