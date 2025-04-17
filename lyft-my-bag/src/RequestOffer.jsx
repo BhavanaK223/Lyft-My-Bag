@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from 'react-hook-form';
+import { Navbar } from "./Navbar";
 import gatorBlur2 from "./public/gator-blur-2.png";
 import "./RequestOffer.css";
 
@@ -77,7 +78,6 @@ const RequestOffer = () => {
         }  
         reset(); // Reset the form fields after submission   
     };
-
 
 
     return (
