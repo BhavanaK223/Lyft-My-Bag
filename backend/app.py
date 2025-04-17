@@ -102,6 +102,7 @@ def create_trip():
 
     trip = {
         # "user_id": ObjectId(user_id),
+        "email": data.get("email"),
         "date": data.get("date"),
         "time": data.get("time"),
         "duration": data.get("duration"),
@@ -117,15 +118,13 @@ def create_trip():
     mongo.db.trips.insert_one(trip)
     return jsonify({"message": "Trip saved!"}), 201
 
-@app.route('/offer-board', methods=['GET'])
-def get_my_trips():
-    user_id = get_jwt_identity()
-    trips = list(db.trips.find({"user_id": ObjectId(user_id)}))
+@app.route('/api/trips', methods=['GET'])
+def get_public_trips():
+    trips = list(mongo.db.trips.find({}))  # or just {} to get *all* trips
     for trip in trips:
         trip['_id'] = str(trip['_id'])
-        trip['user_id'] = str(trip['user_id'])
+        trip['email'] = str(trip['email'])  # if you want to show who posted
     return jsonify(trips)
-
 
 
     # Get user details from the request
