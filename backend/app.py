@@ -125,7 +125,7 @@ def get_public_trips():
     trips = list(mongo.db.trips.find({}))  # or just {} to get *all* trips
     for trip in trips:
         trip['_id'] = str(trip['_id'])
-        # trip['email'] = str(trip['email'])  # if you want to show who posted
+        #trip['email'] = str(trip['email']) # if you want to show who posted
     return jsonify(trips)
 
 

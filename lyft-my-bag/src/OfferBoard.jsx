@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+
 import { Navbar } from "./Navbar";
 import "./style.css";
 import { TextLink } from "./TextLink";
@@ -27,7 +28,11 @@ export const OfferBoard = () => {
             <div className="p-4">
                 <h1 className="text-2xl font-bold mb-4">Offer Board</h1>
                 {trips.length === 0 ? (
-                    <p>No trips available yet.</p>
+                    <p>No trips available yet.
+                    <Link to="/login" className="login-button">
+                        <div className="text-wrapper-4">Create New Trip</div>
+                    </Link>
+                    </p>
                 ) : (
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {trips.map((trip) => (
@@ -41,6 +46,10 @@ export const OfferBoard = () => {
                         
                         <p><strong>Seats:</strong> {trip.seatsAvailable}</p>
                         <p><strong>Compensation:</strong> ${trip.compensation}</p>
+                        <Link to="/profile" className="login-button">
+                            <div className="text-wrapper-4">Request</div>
+                        </Link>
+
                         {trip.additionalNotes && (
                             <p className="italic mt-2 text-gray-600">Note: {trip.additionalNotes}</p>
                         )}

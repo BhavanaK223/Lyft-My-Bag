@@ -178,7 +178,10 @@ const RequestOffer = () => {
             ) : (
                 <>
                     <h2>You are not logged in</h2>
-                    <a href="/login">Go to Login</a>
+                        <Link to="/login" className="login-button">
+                            <div className="text-wrapper-4">Login</div>
+                        </Link>
+                        {/*<a href="/login">Go to Login</a>*/}
                 </>
             )}
 
