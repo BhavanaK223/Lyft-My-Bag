@@ -6,7 +6,7 @@ from werkzeug.security import check_password_hash
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
 
-# Use your actual password instead of <db_password> (SuperSeceret)
+# Use your actual password instead of <db_password> (SuperSecret)
 app.config["MONGO_URI"] = "mongodb+srv://LyftMyBag:SuperSecret@lyftmybag.3hifm.mongodb.net/LyftMyBag?retryWrites=true&w=majority&appName=LyftMyBag"
 
 mongo = PyMongo(app)
@@ -125,7 +125,7 @@ def get_public_trips():
     trips = list(mongo.db.trips.find({}))  # or just {} to get *all* trips
     for trip in trips:
         trip['_id'] = str(trip['_id'])
-        trip['email'] = str(trip['email'])  # if you want to show who posted
+        # trip['email'] = str(trip['email'])  # if you want to show who posted
     return jsonify(trips)
 
 

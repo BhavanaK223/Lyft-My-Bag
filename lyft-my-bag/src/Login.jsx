@@ -48,7 +48,6 @@ export const LoginPage = () => {
               setErrorMessage('');
               if (!isRegistering) {
                 localStorage.setItem("user", JSON.stringify(result.user)); // Store user data
-                print(result.user); // Print user data to console
                 navigate("/profile"); // Redirect to dashboard
               }
             } else {
