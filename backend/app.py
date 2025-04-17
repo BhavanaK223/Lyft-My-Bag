@@ -73,13 +73,61 @@ def register():
 
     return jsonify({"message": "User registered successfully"}), 201
 
-#
-@app.route('/offer', methods=['POST'])
-def get_users():
+@app.route('/profile', methods=['POST'])
+def get_profile():
+    data = request.get_json()
+
+    if not data or 'email' not in data:
+        return jsonify({"error": "Email is required"}), 400
+
+    email = data['email']
+    user = mongo.db.users.find_one({'email': email})
+
+    if not user:
+        return jsonify({"error": "User not found"}), 404
+
+    return jsonify({
+        "firstName": user['firstName'],
+        "lastName": user['lastName'],
+        "email": user['email']
+    }), 200
+
+
+@app.route('/requests', methods=['POST'])
+def create_trip():
     data = request.get_json()
     print()
-    print(data)
+    print(data)  # Debugging line to check the incoming data
     print()
+
+    trip = {
+        # "user_id": ObjectId(user_id),
+        "email": data.get("email"),
+        "date": data.get("date"),
+        "time": data.get("time"),
+        "duration": data.get("duration"),
+        "durationType": data.get("durationType"),
+        "destinationType": data.get("destinationType"),
+        "destinationName": data.get("destinationName"),
+        "address": data.get("address"),
+        "compensation": data.get("compensation"),
+        "seatsAvailable": data.get("seatsAvailable"),
+        "additionalNotes": data.get("additionalNotes"),
+    }
+
+    mongo.db.trips.insert_one(trip)
+    return jsonify({"message": "Trip saved!"}), 201
+
+@app.route('/offer-board', methods=['GET'])
+def get_my_trips():
+    user_id = get_jwt_identity()
+    trips = list(db.trips.find({"user_id": ObjectId(user_id)}))
+    for trip in trips:
+        trip['_id'] = str(trip['_id'])
+        trip['user_id'] = str(trip['user_id'])
+    return jsonify(trips)
+
+
 
     # Get user details from the request
     
