@@ -33,10 +33,12 @@ export const OfferBoard = () => {
                     {trips.map((trip) => (
                         <li key={trip._id} className="border rounded-xl shadow p-4 bg-white">
                         <h2 className="text-lg font-semibold mb-1">{trip.destinationName}</h2>
-                        <p><strong>Type:</strong> {trip.destinationType}</p>
+                        <p>{trip.address}</p>
+                        <p><strong>{trip.email}</strong></p>
+                        {/* <p><strong>Type:</strong> {trip.destinationType}</p> */}
                         <p><strong>Date:</strong> {trip.date} @ {trip.time}</p>
                         <p><strong>Duration:</strong> {trip.duration} {trip.durationType}</p>
-                        <p><strong>Address:</strong> {trip.address}</p>
+                        
                         <p><strong>Seats:</strong> {trip.seatsAvailable}</p>
                         <p><strong>Compensation:</strong> ${trip.compensation}</p>
                         {trip.additionalNotes && (
