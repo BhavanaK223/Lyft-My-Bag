@@ -12,24 +12,13 @@ export const Navbar = ({ className = "" }) => {
             <div className="text-wrapper-6">LMB</div>
 
             <div className="header-buttons">
-                        {/*Profile button class*/}
-                        <Link to="/profile" className="login-button">
-                            <div className="text-wrapper-4">Profile</div>
-                        </Link>
+                        
 
                         {/* Login Page*/}
                         <Link to="/login" className="login-button">
-                            <div className="text-wrapper-4">Login</div>
+                            <div className="text-wrapper-4">Login/Sign Up</div>
                         </Link>
-
-                        {/*request a trip page*/}
-                        <Link to="/request" className="login-button">
-                            <div className="text-wrapper-4">Request</div>
-                        </Link>
-                        {/*offer board page*/}
-                        <Link to="/offer-board" className="login-button">
-                            <div className="text-wrapper-4">Offer Board</div>
-                        </Link>
+                      
                         {/*home page
                         Link to="/offer-board" className="login-button">
                             <div className="text-wrapper-4">Chat</div>

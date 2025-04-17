@@ -77,6 +77,7 @@ export const Profile = () => {
                         </div>
                         <div className="dashboard-right">
                             <div className="card trips-driver-card">Upcoming Trips (Driver)
+                                {/*list the upcoming trips*/}
                                 <Link to="/request" className="login-button">
                                     <div className="text-wrapper-4">Create New Trip</div>
                                 </Link>

@@ -25,9 +25,9 @@ export const HomePage = () => {
                 <div className="frame">
                     <p className="p">Welcome to Lyft My Bag</p>
                     <div className="text-wrapper-4">mission statement here</div>
-                    <button className="get-started-button">
-                        <div className="text-wrapper-5">Get Started</div>
-                    </button>
+                        <Link to="/login" className="get-started-button">
+                            <div className="text-wrapper-5">Get Started</div>
+                        </Link>
                 </div>
             </div>
             
