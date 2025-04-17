@@ -58,7 +58,6 @@ export const Profile = () => {
 
     return(
         <div className="page">
-            <div><Navbar /></div>
             {user ? (
                 <>
                     {/* <h2>Welcome, {user.firstName} {user.lastName}!</h2>
