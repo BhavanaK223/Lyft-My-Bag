@@ -23,15 +23,15 @@ export const OfferBoard = () => {
 
     return(
         <div className="page">
-            <div><Navbar /></div>
+            {/*<div><Navbar /></div>*/}
             <div className="p-4">
                 <h1 className="text-2xl font-bold mb-4">Offer Board</h1>
                 {trips.length === 0 ? (
                     <p>No trips available yet.</p>
                 ) : (
-                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {trips.map((trip) => (
-                        <li key={trip._id} className="border rounded-xl shadow p-4 bg-white">
+                        <div key={trip._id} className="card profile-card">
                         <h2 className="text-lg font-semibold mb-1">{trip.destinationName}</h2>
                         <p>{trip.address}</p>
                         <p><strong>{trip.email}</strong></p>
@@ -44,9 +44,9 @@ export const OfferBoard = () => {
                         {trip.additionalNotes && (
                             <p className="italic mt-2 text-gray-600">Note: {trip.additionalNotes}</p>
                         )}
-                        </li>
+                        </div>
                         ))}
-                    </ul>
+                    </div>
                 )}
             </div>
         </div>
