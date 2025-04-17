@@ -1,6 +1,7 @@
 ﻿import React, {useEffect, useState} from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from 'react-hook-form';
+import { Navbar } from "./Navbar";
 import gatorBlur2 from "./public/gator-blur-2.png";
 import "./style.css";
 
@@ -78,16 +79,11 @@ const RequestOffer = () => {
     };
 
 
-
     return (
 
         <div>
-            <div>          
-                <Link to="/login">Login</Link><br />
-                <Link to="/profile">Profile</Link><br />
-                <Link to="/request">Request</Link><br />
-            </div>
-             {user ? (
+            <div><Navbar /></div>             
+            {user ? (
                 <>
                 <form onSubmit={handleSubmit}>
                     <h2>Create New Trip</h2>

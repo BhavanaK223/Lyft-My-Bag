@@ -34,6 +34,7 @@ def login():
     return jsonify({
         "message": "Login successful", 
         "user": {
+            "userId": str(user['_id']),
             "firstName": user['firstName'],
             "lastName": user['lastName'],
             "email": user['email']}    
@@ -87,6 +88,7 @@ def get_profile():
         return jsonify({"error": "User not found"}), 404
 
     return jsonify({
+        "userId": str(user['_id']),
         "firstName": user['firstName'],
         "lastName": user['lastName'],
         "email": user['email']
