@@ -16,18 +16,14 @@ const RequestOffer = () => {
         }
     }, []);
   
-
     //Handle Time Change
     const [time, setTime] = useState('');
     const handleTimeChange = (event) => {
       setTime(event.target.value);
     };
 
-    const [errorMessage, setErrorMessage] = useState('');
-    const [successMessage, setSuccessMessage] = useState('');
-
     const { reset } = useForm();
-    const [formData, setFormData] = useState({
+    const [tripData, setTripData] = useState({
         date: "",
         time: "",
         duration: "",
@@ -41,53 +37,44 @@ const RequestOffer = () => {
     });
 
     const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
+        setTripData({ ...tripData, [e.target.name]: e.target.value });
     };
 
     const handleSubmit = async (e) => {
-        // Handle form submission logic here
         e.preventDefault();
-
-        const url = "http://localhost:5000/offer";
+        const url = "http://localhost:5000/requests";
         const payload = {
-            date: formData.date,
-            time: formData.time,  
-            duration: formData.duration,
-            durationType: formData.durationType,
-            destinationType: formData.destinationType,
-            destinationName: formData.destinationName,
-            address: formData.address,
-            compensation: formData.compensation,
-            seatsAvailable: formData.seatsAvailable,
-            additionalNotes: formData.additionalNotes  
+            date: tripData.date,
+            time: tripData.time,
+            duration: tripData.duration,
+            durationType: tripData.durationType,
+            destinationType: tripData.destinationType,
+            destinationName: tripData.destinationName,
+            address: tripData.address,
+            compensation: tripData.compensation,
+            seatsAvailable: tripData.seatsAvailable,
+            additionalNotes: tripData.additionalNotes
         };
 
-        try {
+        try{
             const response = await fetch(url, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(payload),
             });
 
-            const result = await response.json();
-  
+            const data = await response.json();
             if (response.ok) {
-              // Login successful
-              setSuccessMessage(result.message);
-              setErrorMessage('');
-                localStorage.setItem("user", JSON.stringify(result.user)); // Store user data
-                navigate("/offer-board"); // Redirect to dashboard
-
+              alert("Trip created!");
+              reset();
             } else {
-              // Error handling
-              setErrorMessage(result.error || 'An unknown error occurred');
-              setSuccessMessage('');
+              console.error(data);
             }
-          } catch (error) {
-            setErrorMessage('Failed to connect to the server');
-            setSuccessMessage('');
-          }
-    }
+        }catch (error) {
+            console.error("Error:", error);
+        }  
+        reset(); // Reset the form fields after submission   
+    };
 
 
 
@@ -137,8 +124,6 @@ const RequestOffer = () => {
                     <label htmlFor="lname">Additional Notes:</label><br />
                         <input type="text" id="additionalNotes" name="additionalNotes" placeholder="Optional Text"  onChange={handleChange}/><br />
                     <button type="submit">Submit</button>
-                    {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
-                    {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
                 </form>
                 </>
             ) : (
