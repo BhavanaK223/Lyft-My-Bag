@@ -1,0 +1,341 @@
+.create-new-trip {
+    align-items: center;
+    background-color: var(--honeydew);
+    display: flex;
+    gap: 10px;
+    height: auto;
+    min-height: 100vh;
+    justify-content: center;
+    min-width: 1024px;
+    position: relative;
+    width: 100%;
+}
+
+.create-new-trip .trip-form {
+    align-items: flex-start;
+    background-color: var(--color-background-default-default);
+    border: 1px solid;
+    border-color: var(--color-border-default-default);
+    border-radius: var(--size-radius-200);
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    gap: var(--size-space-600);
+    min-width: 320px;
+    padding: var(--size-space-600);
+    position: relative;
+    width: 572px;
+}
+
+.create-new-trip .legend {
+    align-items: flex-start;
+    align-self: stretch;
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    gap: var(--size-space-100);
+    position: relative;
+    width: 100%;
+}
+
+.create-new-trip .div {
+    color: #000000;
+    font-family: var(--paragraph-font-family);
+    font-size: var(--paragraph-font-size);
+    font-style: var(--paragraph-font-style);
+    font-weight: var(--paragraph-font-weight);
+    letter-spacing: var(--paragraph-letter-spacing);
+    line-height: var(--paragraph-line-height);
+    margin: 0;
+    position: relative;
+    width: fit-content;
+}
+
+.create-new-trip .text-instance {
+    flex: 0 0 auto !important;
+}
+
+.create-new-trip .design-component-instance-node {
+    color: var(--color-text-default-secondary) !important;
+}
+
+.create-new-trip .frame {
+    align-items: flex-start;
+    display: flex;
+    flex: 0 0 auto;
+    gap: 15px;
+    position: relative;
+    width: auto;
+}
+
+.create-new-trip .div-2 {
+    align-items: flex-start;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-space-200);
+    position: relative;
+    width: 180px;
+}
+
+.create-new-trip .text-wrapper-2 {
+    align-self: stretch;
+    color: var(--color-text-default-default);
+    font-family: var(--body-base-font-family);
+    font-size: var(--body-base-font-size);
+    font-style: var(--body-base-font-style);
+    font-weight: var(--body-base-font-weight);
+    letter-spacing: var(--body-base-letter-spacing);
+    line-height: var(--body-base-line-height);
+    margin-top: -1.00px;
+    position: relative;
+}
+
+input {
+    min-width: 148px;
+}
+
+.create-new-trip .input {
+    align-items: center;
+    align-self: stretch;
+    background-color: var(--color-background-default-default);
+    border: 1px solid;
+    border-color: var(--color-border-default-default);
+    border-radius: var(--size-radius-200);
+    display: flex;
+    flex: 0 0 auto;
+    margin-bottom: -1.00px;
+    margin-left: -1.00px;
+    margin-right: -1.00px;
+    overflow: hidden;
+    padding: var(--size-space-300) var(--size-space-400) var(--size-space-300)
+        var(--size-space-400);
+    position: relative;
+}
+
+.create-new-trip .text-wrapper-3 {
+    color: var(--color-text-default-tertiary);
+    flex: 1;
+    font-family: var(--single-line-body-base-font-family);
+    font-size: var(--single-line-body-base-font-size);
+    font-style: var(--single-line-body-base-font-style);
+    font-weight: var(--single-line-body-base-font-weight);
+    letter-spacing: var(--single-line-body-base-letter-spacing);
+    line-height: var(--single-line-body-base-line-height);
+    margin-top: -0.50px;
+    position: relative;
+}
+
+.create-new-trip .select {
+    align-items: center;
+    align-self: stretch;
+    background-color: var(--color-background-default-default);
+    border: 1px solid;
+    border-color: var(--color-border-default-default);
+    border-radius: var(--size-radius-200);
+    display: flex;
+    gap: var(--size-space-200);
+    margin-bottom: -1.00px;
+    margin-left: -1.00px;
+    margin-right: -1.00px;
+    padding: var(--size-space-300) var(--size-space-300) var(--size-space-300)
+        var(--size-space-400);
+    position: relative;
+}
+
+.create-new-trip .text-wrapper-4 {
+    color: var(--color-text-default-default);
+    flex: 1;
+    font-family: var(--single-line-body-base-font-family);
+    font-size: var(--single-line-body-base-font-size);
+    font-style: var(--single-line-body-base-font-style);
+    font-weight: var(--single-line-body-base-font-weight);
+    letter-spacing: var(--single-line-body-base-letter-spacing);
+    line-height: var(--single-line-body-base-line-height);
+    margin-top: -0.50px;
+    position: relative;
+}
+
+.create-new-trip .size-16 {
+    height: 16px !important;
+    position: relative !important;
+    width: 16px !important;
+}
+
+.create-new-trip .div-3 {
+    align-items: flex-start;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: var(--size-space-200);
+    position: relative;
+    width: 278px;
+}
+
+.create-new-trip .select-2 {
+    align-items: center;
+    align-self: stretch;
+    background-color: var(--color-background-default-default);
+    border: 1px solid;
+    border-color: var(--color-border-default-default);
+    border-radius: var(--size-radius-200);
+    display: flex;
+    gap: var(--size-space-200);
+    height: 42px;
+    margin-bottom: -1.00px;
+    margin-left: -1.00px;
+    margin-right: -1.00px;
+    min-width: 240px;
+    padding: var(--size-space-300) var(--size-space-400) var(--size-space-300)
+        var(--size-space-400);
+    position: relative;
+    width: 100%;
+}
+
+.create-new-trip .value-wrapper {
+    align-items: center;
+    align-self: stretch;
+    background-color: var(--color-background-default-default);
+    border: 1px solid;
+    border-color: var(--color-border-default-default);
+    border-radius: var(--size-radius-200);
+    display: flex;
+    flex: 0 0 auto;
+    margin-bottom: -1.00px;
+    margin-left: -1.00px;
+    margin-right: -1.00px;
+    min-width: 240px;
+    overflow: hidden;
+    padding: var(--size-space-300) var(--size-space-400) var(--size-space-300)
+        var(--size-space-400);
+    position: relative;
+    width: 100%;
+}
+
+.create-new-trip .div-4 {
+    align-items: flex-start;
+    align-self: stretch;
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    gap: var(--size-space-200);
+    position: relative;
+    width: 100%;
+}
+
+.create-new-trip .textarea {
+    align-items: flex-start;
+    align-self: stretch;
+    background-color: var(--color-background-default-default);
+    border: 1px solid;
+    border-color: var(--color-border-default-default);
+    border-radius: var(--size-radius-200);
+    display: flex;
+    flex: 0 0 auto;
+    margin-bottom: -1.00px;
+    margin-left: -1.00px;
+    margin-right: -1.00px;
+    min-height: 80px;
+    min-width: 240px;
+    overflow: hidden;
+    padding: var(--size-space-300) var(--size-space-400) var(--size-space-300)
+        var(--size-space-400);
+    position: relative;
+    width: 100%;
+}
+
+.create-new-trip .value {
+    color: var(--color-text-default-tertiary);
+    flex: 1;
+    font-family: var(--body-base-font-family);
+    font-size: var(--body-base-font-size);
+    font-style: var(--body-base-font-style);
+    font-weight: var(--body-base-font-weight);
+    letter-spacing: var(--body-base-letter-spacing);
+    line-height: var(--body-base-line-height);
+    margin-top: -0.50px;
+    position: relative;
+}
+
+.create-new-trip .drag {
+    height: 7px;
+    left: 560px;
+    position: absolute;
+    top: 67px;
+    width: 7px;
+}
+
+.create-new-trip .button-group {
+    align-items: center;
+    align-self: stretch;
+    display: flex;
+    flex: 0 0 auto;
+    gap: var(--size-space-400);
+    position: relative;
+    width: 100%;
+}
+
+.create-new-trip .button {
+    align-items: center;
+    background-color: var(--light-green);
+    border-color: var(--light-green);
+    border-radius: var(--size-radius-200);
+    display: flex;
+    flex: 1;
+    flex-grow: 1;
+    gap: var(--size-space-200);
+    justify-content: center;
+    overflow: hidden;
+    padding: var(--size-space-300);
+    position: relative;
+    text-decoration: none;
+}
+
+.create-new-trip .button-2 {
+    all: unset;
+    box-sizing: border-box;
+    color: var(--color-text-neutral-default);
+    font-family: var(--button-font-family);
+    font-size: var(--button-font-size);
+    font-style: var(--button-font-style);
+    font-weight: var(--button-font-weight);
+    letter-spacing: var(--button-letter-spacing);
+    line-height: var(--button-line-height);
+    margin-top: -1.00px;
+    position: relative;
+    width: fit-content;
+}
+
+.create-new-trip .button-wrapper {
+    all: unset;
+    align-items: center;
+    background-color: var(--color-background-brand-default);
+    border: 1px solid;
+    border-color: var(--color-border-brand-default);
+    border-radius: var(--size-radius-200);
+    box-sizing: border-box;
+    display: flex;
+    flex: 1;
+    flex-grow: 1;
+    gap: var(--size-space-200);
+    justify-content: center;
+    overflow: hidden;
+    padding: var(--size-space-300);
+    position: relative;
+}
+
+.create-new-trip .button-3 {
+    all: unset;
+    box-sizing: border-box;
+    color: var(--color-text-brand-on-brand);
+    font-family: var(--button-font-family);
+    font-size: var(--button-font-size);
+    font-style: var(--button-font-style);
+    font-weight: var(--button-font-weight);
+    letter-spacing: var(--button-letter-spacing);
+    line-height: var(--button-line-height);
+    margin-top: -1.00px;
+    position: relative;
+    width: fit-content;
+}

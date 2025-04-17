@@ -62,9 +62,11 @@
     --single-line-body-base-letter-spacing: 0px;
     --single-line-body-base-line-height: 100%;
     --size-radius-200: 8px;
+    --size-space-100: 4px;
     --size-space-200: 8px;
     --size-space-300: 12px;
     --size-space-400: 16px;
+    --size-space-600: 24px;
     --small-text-font-family: "Roboto Mono", Helvetica;
     --small-text-font-size: 16px;
     --small-text-font-style: normal;
