@@ -1,13 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
 import { Navbar } from "./Navbar";
 import "./style.css";
 import { TextLink } from "./TextLink";
 
 export const OfferBoard = () => {
     const [trips, setTrips] = useState([]);
+    const [userEmail, setUserEmail] = useState("");
+
+
+
     useEffect(() => {
+        const storedUser = localStorage.getItem("user");
+        if (storedUser) {
+            const parsed = JSON.parse(storedUser);
+            setUserEmail(parsed.email); // ✅ Store the logged-in user's email
+        }
+
         const fetchTrips = async () => {
             try {
                 const response = await fetch("http://localhost:5000/api/trips");
@@ -21,7 +30,36 @@ export const OfferBoard = () => {
         fetchTrips();
     }, []);
     
-
+    const handleJoinTrip = async (tripId) => {
+        if (!userEmail) {
+            alert("You must be logged in to join a trip");
+            return;
+        }
+    
+        try {
+            const res = await fetch("http://localhost:5000/join-trip", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ trip_id: tripId, rider_email: userEmail })
+            });
+    
+            const data = await res.json();
+    
+            if (res.ok) {
+                alert("Successfully joined trip!");
+                // Refresh trip data to update seat count
+                const updatedTrips = await fetch("http://localhost:5000/api/trips");
+                const updatedData = await updatedTrips.json();
+                setTrips(updatedData);
+            } else {
+                alert(data.error || "Something went wrong");
+            }
+        } catch (err) {
+            console.error("Error joining trip:", err);
+            alert("Could not join trip");
+        }
+    };
+    
     return(
         <div className="page">
             {/*<div><Navbar /></div>*/}
@@ -39,16 +77,24 @@ export const OfferBoard = () => {
                         <div key={trip._id} className="card profile-card">
                         <h2 className="text-lg font-semibold mb-1">{trip.destinationName}</h2>
                         <p>{trip.address}</p>
-                        <p><strong>{trip.email}</strong></p>
+                        <p><strong>{trip.firstName} {trip.lastName?.charAt(0)}</strong></p>
                         {/* <p><strong>Type:</strong> {trip.destinationType}</p> */}
                         <p><strong>Date:</strong> {trip.date} @ {trip.time}</p>
-                        <p><strong>Duration:</strong> {trip.duration} {trip.durationType}</p>
+                        <p><strong>Duration:</strong> {trip.duration} Hours</p>
                         
                         <p><strong>Seats:</strong> {trip.seatsAvailable}</p>
                         <p><strong>Compensation:</strong> ${trip.compensation}</p>
                         <Link to="/profile" className="login-button">
                             <div className="text-wrapper-4">Request</div>
                         </Link>
+                        {trip.email !== userEmail && // not the trip owner
+                        !trip.riders?.includes(userEmail) && // not already joined
+                        trip.seatsAvailable > 0 && ( // trip not full
+                            <button onClick={() => handleJoinTrip(trip._id)}
+                            > 
+                                Join Trip
+                            </button>
+                        )}
 
                         {trip.additionalNotes && (
                             <p className="italic mt-2 text-gray-600">Note: {trip.additionalNotes}</p>

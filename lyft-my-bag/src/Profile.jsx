@@ -8,6 +8,8 @@ import { set } from "react-hook-form";
 export const Profile = () => {
     //const [activeTab, setActiveTab] = useState('Profile');
     const [user, setUser] = useState(null);
+    const [trips, setTrips] = useState([]);
+    const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
 
     // useEffect(() => {
@@ -36,6 +38,14 @@ export const Profile = () => {
                     setUser(null);
                 } else {
                     setUser(data);
+                    fetch(`http://localhost:5000/api/user-trips?email=${email}`)
+                    .then(res => res.json())
+                    .then(tripData => {
+                        setTrips(tripData); // <-- make sure you have a trips state
+                    })
+                    .catch(err => {
+                        console.error("Error fetching user trips:", err);
+                    });
                 }
                 setLoading(false);
             })
@@ -78,6 +88,17 @@ export const Profile = () => {
                         <div className="dashboard-right">
                             <div className="card trips-driver-card">Upcoming Trips (Driver)
                                 {/*list the upcoming trips*/}
+                                {trips.length === 0 ? (
+                                    <p>No upcoming trips</p>
+                                ) : (
+                                    trips.map((trip) => (
+                                        <div key={trip._id} className="card trip-card">
+                                            <h2>{trip.destinationName}</h2>
+                                            <p><strong>Date:</strong> {trip.date}</p>
+                                        </div>
+                                    ))
+                                )
+                                }
                                 <Link to="/request" className="login-button">
                                     <div className="text-wrapper-4">Create New Trip</div>
                                 </Link>

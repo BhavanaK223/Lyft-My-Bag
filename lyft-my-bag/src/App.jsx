@@ -5,7 +5,6 @@ import LoginPage from "./Login";
 import Profile from "./Profile";
 import RequestOffer from "./RequestOffer";
 import { OfferBoard } from "./OfferBoard";
-import {Chat} from "./Chat";
 
 const App = () => {
     return (
@@ -16,7 +15,6 @@ const App = () => {
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/request" element={<RequestOffer />} />
                 <Route path="/offer-board" element={<OfferBoard />} />
-                <Route path="/chat/:otherUserId" element={<Chat />} />
             </Routes>
         </Router>
     );

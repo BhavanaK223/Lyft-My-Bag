@@ -27,7 +27,6 @@ const RequestOffer = () => {
         date: "",
         time: "",
         duration: "",
-        durationType: "",
         destinationType: "",
         destinationName: "",
         address: "",
@@ -45,10 +44,12 @@ const RequestOffer = () => {
         const url = "http://localhost:5000/requests";
         const payload = {
             email: user.email,
+            firstName: user.firstName,
+            lastName: user.lastName,  
+            userId: user._id,
             date: tripData.date,
             time: tripData.time,
             duration: tripData.duration,
-            durationType: tripData.durationType,
             destinationType: tripData.destinationType,
             destinationName: tripData.destinationName,
             address: tripData.address,
@@ -162,6 +163,7 @@ const RequestOffer = () => {
                                 <Link to="/profile" className="button">
                                     <button className="button-2">Cancel</button>
                                 </Link>
+                                <button type="submit">Submit</button>
                                 
                                 <div className="button-wrapper">
                                     <button className="button-3" type="submit">Submit</button>
