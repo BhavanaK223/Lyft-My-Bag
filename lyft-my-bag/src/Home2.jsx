@@ -24,7 +24,7 @@ export const HomePage = () => {
 
                 <div className="frame">
                     <p className="p">Welcome to Lyft My Bag</p>
-                    <div className="text-wrapper-4">mission statement here</div>
+                    <div className="text-wrapper-7">Making it easier for students to get around Gainesville</div>
                         <Link to="/login" className="get-started-button">
                             <div className="text-wrapper-5">Get Started</div>
                         </Link>
@@ -50,9 +50,9 @@ export const HomePage = () => {
                             <Card className="trip-form" editSquare={editsquare} text="look at posted trips" />
                         </div>
 
-                        <button className="button">
+                        <Link to="/login" className="button">
                             <div className="text-wrapper-2">Become A Passenger</div>
-                        </button>
+                        </Link>
                     </div>
 
                     <div className="driver-info">
@@ -68,9 +68,9 @@ export const HomePage = () => {
                             <Card className="trip-form" editSquare={editsquare} text="fill out a trip form" />
                         </div>
 
-                        <button className="button">
+                        <Link to="/login" className="button">
                             <div className="text-wrapper-2">Become A Driver</div>
-                        </button>
+                        </Link>
                     </div>
                 </div>
             </div>
