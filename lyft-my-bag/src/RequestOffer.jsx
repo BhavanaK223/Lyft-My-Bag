@@ -1,15 +1,13 @@
 import React, {useEffect, useState} from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from 'react-hook-form';
-import { Navbar } from "./Navbar";
-import gatorBlur2 from "./public/gator-blur-2.png";
 import "./RequestOffer.css";
 
 
 const RequestOffer = () => {
     //user information
     const [user, setUser] = useState(null);
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     useEffect(() => {
         const storedUser = localStorage.getItem('user');
         if(storedUser) {
