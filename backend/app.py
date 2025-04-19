@@ -40,7 +40,7 @@ def login():
             "email": user['email']}    
         }), 200
 
-# Route for user registration
+# User registration
 @app.route('/register', methods=['POST'])
 def register():
     data = request.get_json()
@@ -74,6 +74,7 @@ def register():
 
     return jsonify({"message": "User registered successfully"}), 201
 
+# User Info Retrieval
 @app.route('/profile', methods=['POST'])
 def get_profile():
     data = request.get_json()
@@ -95,20 +96,22 @@ def get_profile():
     }), 200
 
 
+# Creating a trip request
 @app.route('/requests', methods=['POST'])
 def create_trip():
     data = request.get_json()
-    print()
+    print("data received:")
     print(data)  # Debugging line to check the incoming data
     print()
 
     trip = {
         # "user_id": ObjectId(user_id),
         "email": data.get("email"),
+        "firstName": data.get("firstName"),
+        "lastName": data.get("lastName"),
         "date": data.get("date"),
         "time": data.get("time"),
         "duration": data.get("duration"),
-        "durationType": data.get("durationType"),
         "destinationType": data.get("destinationType"),
         "destinationName": data.get("destinationName"),
         "address": data.get("address"),
@@ -118,8 +121,47 @@ def create_trip():
     }
 
     mongo.db.trips.insert_one(trip)
+    print(trip)
     return jsonify({"message": "Trip saved!"}), 201
 
+# Join a trip request
+@app.route('/join-trip', methods=['POST'])
+def join_trip():
+    data = request.json
+    trip_id = data.get('trip_id')
+    rider_email = data.get('rider_email')
+
+    print("data received:")
+    print(data)  # Debugging line to check the incoming data
+
+    if not trip_id or not rider_email:
+        return jsonify({"error": "Missing trip_id or rider_email"}), 400
+
+    trip = mongo.db.trips.find_one({"_id": ObjectId(trip_id)})
+
+    if not trip:
+        return jsonify({"error": "Trip not found"}), 404
+
+    if trip['seatsAvailable'] <= 0:
+        return jsonify({"error": "Trip is full"}), 400
+
+    if 'riders' in trip and rider_email in trip['riders']:
+        return jsonify({"error": "Already joined this trip"}), 400
+
+    # Update trip: add rider + decrease seats
+    mongo.db.trips.update_one(
+        {"_id": ObjectId(trip_id)},
+        {
+            "$addToSet": {"riders": rider_email},
+            "$inc": {"seatsAvailable": -1}
+        }
+    )
+
+    return jsonify({"message": "Successfully joined the trip"}), 200
+
+
+
+# List all trips
 @app.route('/api/trips', methods=['GET'])
 def get_public_trips():
     trips = list(mongo.db.trips.find({}))  # or just {} to get *all* trips
@@ -127,12 +169,19 @@ def get_public_trips():
         trip['_id'] = str(trip['_id'])
         #trip['email'] = str(trip['email']) # if you want to show who posted
     return jsonify(trips)
-
-
-    # Get user details from the request
     
+# List trips by User Email
+@app.route('/api/user-trips', methods=['GET'])
+def get_user_trips_by_email():
+    email = request.args.get("email")
+    if not email:
+        return jsonify({"error": "Email required"}), 400
 
+    trips = list(mongo.db.trips.find({"email": email}))
+    for trip in trips:
+        trip['_id'] = str(trip['_id'])
 
+    return jsonify(trips), 200
 
 if __name__ == '__main__':
     app.run(debug=True)
