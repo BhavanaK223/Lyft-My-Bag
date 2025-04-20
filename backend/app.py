@@ -76,7 +76,7 @@ def register():
 
     return jsonify({"message": "User registered successfully"}), 201
 
-# User Info Retrieval
+# User profile retrieval
 @app.route('/profile', methods=['POST'])
 def get_profile():
     data = request.get_json()
@@ -119,6 +119,7 @@ def create_trip():
         "address": data.get("address"),
         "compensation": data.get("compensation"),
         "seatsAvailable": data.get("seatsAvailable"),
+        "maxSeats": data.get("maxSeats"),
         "additionalNotes": data.get("additionalNotes"),
     }
 
@@ -160,6 +161,7 @@ def join_trip():
 
     return jsonify({"message": "Successfully joined the trip"}), 200
 
+# Leave a trip request
 @app.route('/leave-trip', methods=['POST'])
 def leave_trip():
     data = request.json
@@ -197,7 +199,7 @@ def get_public_trips():
         #trip['email'] = str(trip['email']) # if you want to show who posted
     return jsonify(trips)
     
-# List trips by User Email
+# List created trips by User Email
 @app.route('/api/user-trips', methods=['GET'])
 def get_user_trips_by_email():
     email = request.args.get("email")
@@ -209,6 +211,39 @@ def get_user_trips_by_email():
         trip['_id'] = str(trip['_id'])
 
     return jsonify(trips), 200
+
+# List Joined Trips by User Email
+@app.route('/api/joined-trips', methods=['POST'])
+def joined_trips():
+    data = request.json
+    user_email = data.get('email', '')
+
+    if not user_email:
+        return jsonify({'error': 'Email is required'}), 400
+
+    joined = list(mongo.db.trips.find({"riders": user_email}))
+
+    for trip in joined:
+        trip["_id"] = str(trip["_id"])
+    
+    return jsonify(joined)
+
+# remove created trip by email
+@app.route('/api/remove-trip', methods=['POST'])
+def remove_trip():
+    data = request.json
+    trip_id = data.get('trip_id')
+
+    if not trip_id:
+        return jsonify({"error": "Trip ID is required"}), 400
+
+    # Remove the trip from the database
+    result = mongo.db.trips.delete_one({"_id": ObjectId(trip_id)})
+
+    if result.deleted_count == 0:
+        return jsonify({"error": "Trip not found"}), 404
+
+    return jsonify({"message": "Trip removed successfully"}), 200
 
 if __name__ == '__main__':
     app.run(debug=True)

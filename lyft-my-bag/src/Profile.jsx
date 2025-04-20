@@ -9,21 +9,15 @@ export const Profile = () => {
     //const [activeTab, setActiveTab] = useState('Profile');
     const [user, setUser] = useState(null);
     const [trips, setTrips] = useState([]);
+    const [joinedTrips, setJoinedTrips] = useState([]);
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
+    const storedUser = localStorage.getItem('user');
 
-    // useEffect(() => {
-    //     const storedUser = localStorage.getItem('user');
-    //     if(storedUser) {
-    //         setUser(JSON.parse(storedUser));
-    //     }
-    //     setLoading(false);
-    // }, []);
     useEffect(() => {
-        const storedUser = localStorage.getItem('user');
         if (storedUser) {
             const email = JSON.parse(storedUser).email;
-    
+
             fetch("http://localhost:5000/profile", {
                 method: "POST",
                 headers: {
@@ -41,10 +35,23 @@ export const Profile = () => {
                     fetch(`http://localhost:5000/api/user-trips?email=${email}`)
                     .then(res => res.json())
                     .then(tripData => {
-                        setTrips(tripData); // <-- make sure you have a trips state
+                        setTrips(tripData);
                     })
                     .catch(err => {
                         console.error("Error fetching user trips:", err);
+                    });
+                     // Fetch trips the user joined
+                    fetch("http://localhost:5000/api/joined-trips", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({email})
+                    })
+                    .then(res => res.json())
+                    .then(joined => {
+                        setJoinedTrips(joined);
+                    })
+                    .catch(err => {
+                        console.error("Error fetching joined trips:", err);
                     });
                 }
                 setLoading(false);
@@ -57,6 +64,39 @@ export const Profile = () => {
             setLoading(false);
         }
     }, []);
+
+    const handleLeaveTrip = async (tripId) => {
+        const storedUser = localStorage.getItem('user');
+        if (!storedUser) {
+            alert("You must be logged in to leave a trip");
+            return;
+        }
+        const userEmail = JSON.parse(storedUser).email;
+    
+        try {
+            const res = await fetch("http://localhost:5000/leave-trip", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ trip_id: tripId, rider_email: userEmail })
+            });
+    
+            const data = await res.json();
+    
+            if (res.ok) {
+                alert("Successfully left trip!");
+                // Refresh trip data to update seat count
+                const updatedTrips = await fetch("http://localhost:5000/api/trips");
+                const updatedData = await updatedTrips.json();
+                setTrips(updatedData);
+                navigate(0);
+            } else {
+                alert(data.error || "Something went wrong");
+            }
+        } catch (err) {
+            console.error("Error leaving trip:", err);
+            alert("Could not leave trip");
+        }
+    };
     
 
     const handleLogout = () => {
@@ -104,6 +144,25 @@ export const Profile = () => {
                                 </Link>
                             </div>
                             <div className="card trips-passenger-card">Upcoming Trips (Passenger)
+                            {joinedTrips.length === 0 ? (
+                                    <p>You haven’t joined any trips yet.</p>
+                                ) : (
+                                    <ul className="space-y-4">
+                                        {joinedTrips.map(trip => (
+                                            <li key={trip._id} className="card trip-card">
+                                                <h2>{trip.destinationName}</h2>
+                                                <p><strong>Date:</strong> {trip.date}</p>
+                                                <p><strong>Time:</strong> {trip.time}</p>
+                                                <p><strong>Driver:</strong> {trip.email}</p>
+                                                <div>
+                                                <button onClick={() => handleLeaveTrip(trip._id)} className="login-button">
+                                                    Leave Trip
+                                                </button>
+                                                </div>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                )}
                                 <Link to="/offer-board" className="login-button">
                                     <div className="text-wrapper-4">Find a Ride</div>
                                 </Link>

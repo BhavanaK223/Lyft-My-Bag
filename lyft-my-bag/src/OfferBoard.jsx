@@ -126,7 +126,8 @@ export const OfferBoard = () => {
                             </button>
                         )}
                         {trip.riders?.includes(userEmail) && (
-                            <div className="text-green-500">You have joined this trip!
+                            <div>
+                                <p>You have joined this trip!</p>
                             <button onClick={() => handleLeaveTrip(trip._id)} className="login-button">
                                 Leave Trip
                             </button>

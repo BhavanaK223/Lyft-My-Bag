@@ -55,6 +55,7 @@ const RequestOffer = () => {
             address: tripData.address,
             compensation: tripData.compensation,
             seatsAvailable: parseInt(tripData.seatsAvailable),
+            maxSeats: parseInt(tripData.seatsAvailable),
             additionalNotes: tripData.additionalNotes
         };
 
