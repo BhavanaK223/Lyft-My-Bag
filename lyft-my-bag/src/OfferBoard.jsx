@@ -84,16 +84,22 @@ export const OfferBoard = () => {
                         
                         <p><strong>Seats:</strong> {trip.seatsAvailable}</p>
                         <p><strong>Compensation:</strong> ${trip.compensation}</p>
-                        <Link to="/profile" className="login-button">
+                        
+                        {/* <Link to="/profile" className="login-button">
                             <div className="text-wrapper-4">Request</div>
-                        </Link>
+                        </Link> */}
                         {trip.email !== userEmail && // not the trip owner
                         !trip.riders?.includes(userEmail) && // not already joined
                         trip.seatsAvailable > 0 && ( // trip not full
-                            <button onClick={() => handleJoinTrip(trip._id)}
-                            > 
+                            <button onClick={() => handleJoinTrip(trip._id)} className="login-button"> 
                                 Join Trip
                             </button>
+                        )}
+                        {trip.riders?.includes(userEmail) && (
+                            <p className="text-green-500">You have joined this trip!</p>
+                        )}
+                        {trip.email === userEmail && (
+                            <p>You created this trip!</p>
                         )}
 
                         {trip.additionalNotes && (

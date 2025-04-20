@@ -2,6 +2,8 @@ from flask import Flask, jsonify, request
 from flask_pymongo import PyMongo
 from flask_cors import CORS  # Import CORS
 from werkzeug.security import check_password_hash
+from bson.objectid import ObjectId
+
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
@@ -137,12 +139,16 @@ def join_trip():
     if not trip_id or not rider_email:
         return jsonify({"error": "Missing trip_id or rider_email"}), 400
 
+    print("trip_id:")
+    print(ObjectId(trip_id))
     trip = mongo.db.trips.find_one({"_id": ObjectId(trip_id)})
 
     if not trip:
         return jsonify({"error": "Trip not found"}), 404
 
-    if trip['seatsAvailable'] <= 0:
+    print("trip seats avaible:")
+    print(int(trip['seatsAvailable']))
+    if int(trip['seatsAvailable']) <= 0:
         return jsonify({"error": "Trip is full"}), 400
 
     if 'riders' in trip and rider_email in trip['riders']:
