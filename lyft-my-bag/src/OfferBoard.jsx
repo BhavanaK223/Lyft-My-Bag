@@ -59,6 +59,36 @@ export const OfferBoard = () => {
             alert("Could not join trip");
         }
     };
+
+    const handleLeaveTrip = async (tripId) => {
+        if (!userEmail) {
+            alert("You must be logged in to leave a trip");
+            return;
+        }
+    
+        try {
+            const res = await fetch("http://localhost:5000/leave-trip", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ trip_id: tripId, rider_email: userEmail })
+            });
+    
+            const data = await res.json();
+    
+            if (res.ok) {
+                alert("Successfully left trip!");
+                // Refresh trip data to update seat count
+                const updatedTrips = await fetch("http://localhost:5000/api/trips");
+                const updatedData = await updatedTrips.json();
+                setTrips(updatedData);
+            } else {
+                alert(data.error || "Something went wrong");
+            }
+        } catch (err) {
+            console.error("Error leaving trip:", err);
+            alert("Could not leave trip");
+        }
+    };
     
     return(
         <div className="page">
@@ -96,7 +126,12 @@ export const OfferBoard = () => {
                             </button>
                         )}
                         {trip.riders?.includes(userEmail) && (
-                            <p className="text-green-500">You have joined this trip!</p>
+                            <div className="text-green-500">You have joined this trip!
+                            <button onClick={() => handleLeaveTrip(trip._id)} className="login-button">
+                                Leave Trip
+                            </button>
+                            </div>
+                            
                         )}
                         {trip.email === userEmail && (
                             <p>You created this trip!</p>

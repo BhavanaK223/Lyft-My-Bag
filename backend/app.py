@@ -133,9 +133,6 @@ def join_trip():
     trip_id = data.get('trip_id')
     rider_email = data.get('rider_email')
 
-    print("data received:")
-    print(data)  # Debugging line to check the incoming data
-
     if not trip_id or not rider_email:
         return jsonify({"error": "Missing trip_id or rider_email"}), 400
 
@@ -146,8 +143,6 @@ def join_trip():
     if not trip:
         return jsonify({"error": "Trip not found"}), 404
 
-    print("trip seats avaible:")
-    print(int(trip['seatsAvailable']))
     if int(trip['seatsAvailable']) <= 0:
         return jsonify({"error": "Trip is full"}), 400
 
@@ -165,7 +160,33 @@ def join_trip():
 
     return jsonify({"message": "Successfully joined the trip"}), 200
 
+@app.route('/leave-trip', methods=['POST'])
+def leave_trip():
+    data = request.json
+    trip_id = data.get('trip_id')
+    rider_email = data.get('rider_email')
 
+    if not trip_id or not rider_email:
+        return jsonify({"error": "Missing trip_id or rider_email"}), 400
+
+    trip = mongo.db.trips.find_one({"_id": ObjectId(trip_id)})
+
+    if not trip:
+        return jsonify({"error": "Trip not found"}), 404
+
+    if 'riders' not in trip or rider_email not in trip['riders']:
+        return jsonify({"error": "Not a member of this trip"}), 400
+
+    # Update trip: remove rider + increase seats
+    mongo.db.trips.update_one(
+        {"_id": ObjectId(trip_id)},
+        {
+            "$pull": {"riders": rider_email},
+            "$inc": {"seatsAvailable": 1}
+        }
+    )
+
+    return jsonify({"message": "Successfully left the trip"}), 200
 
 # List all trips
 @app.route('/api/trips', methods=['GET'])
