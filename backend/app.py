@@ -228,14 +228,23 @@ def joined_trips():
     
     return jsonify(joined)
 
-# remove created trip by email
+# remove created trip by id
 @app.route('/api/remove-trip', methods=['POST'])
 def remove_trip():
     data = request.json
     trip_id = data.get('trip_id')
+    email = data.get('email')
+    print("data:")
+    print(data)
 
-    if not trip_id:
-        return jsonify({"error": "Trip ID is required"}), 400
+    if not trip_id or not email:
+        return jsonify({"error": "Missing trip_id or email"}), 400
+
+    trip = mongo.db.trips.find_one({"_id": ObjectId(trip_id)})
+
+    # Check if the owner 
+    if trip['email'] != email:
+        return jsonify({"error": "Not the owner of this trip"}), 400
 
     # Remove the trip from the database
     result = mongo.db.trips.delete_one({"_id": ObjectId(trip_id)})
