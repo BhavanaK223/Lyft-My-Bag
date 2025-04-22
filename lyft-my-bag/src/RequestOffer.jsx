@@ -164,8 +164,7 @@ const RequestOffer = () => {
                                 <Link to="/profile" className="button">
                                     <button className="button-2">Cancel</button>
                                 </Link>
-                                <button type="submit">Submit</button>
-                                
+
                                 <div className="button-wrapper">
                                     <button className="button-3" type="submit">Submit</button>
                                 </div>
