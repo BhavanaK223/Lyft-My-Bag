@@ -107,7 +107,7 @@ export const Profile = () => {
     
 
     return(
-        <div className="page">
+        <div className="dashboard">
             {user ? (
                 <>
                     {/* <h2>Welcome, {user.firstName} {user.lastName}!</h2>
@@ -116,61 +116,79 @@ export const Profile = () => {
                         <div className="text-wrapper-4">Request a Ride</div>
                     </Link> */}
 
-                    <button onClick={handleLogout}>Logout</button>
-                    <div className="dashboard">
-                        <div className="dashboard-left">
-                            <div className="card profile-card">Profile
+                    <header>
+                        <div className="text-wrapper-2">LMB</div>
+
+                        <button className="button-logout" onClick={handleLogout}>Log Out</button>
+                    </header>
+
+                    <div className="profile-display">
+                        <div className="div-2">
+                            <div className="profile-block">
+                                <div className="text-wrapper-3">Profile</div>
                                 <p>{user.firstName} {user.lastName}</p>
                                 <a href="#">Profile Settings</a>
                             </div>
-                            <div className="card messages-card">Messages</div>
-                        </div>
-                        <div className="dashboard-right">
-                            <div className="card trips-driver-card">Upcoming Trips (Driver)
-                                {/*list the upcoming trips*/}
-                                {trips.length === 0 ? (
-                                    <p>No upcoming trips</p>
-                                ) : (
-                                    trips.map((trip) => (
-                                        <div key={trip._id} className="card trip-card">
-                                            <h2>{trip.destinationName}</h2>
-                                            <p><strong>Date:</strong> {trip.date}</p>
-                                        </div>
-                                    ))
-                                )
-                                }
-                                <Link to="/request" className="login-button">
-                                    <div className="text-wrapper-4">Create New Trip</div>
-                                </Link>
+
+                            <div className="messages-block">
+                                <div className="text-wrapper-3">Messages</div>
                             </div>
-                            <div className="card trips-passenger-card">Upcoming Trips (Passenger)
-                            {joinedTrips.length === 0 ? (
-                                    <p>You haven’t joined any trips yet.</p>
-                                ) : (
-                                    <ul className="space-y-4">
-                                        {joinedTrips.map(trip => (
-                                            <li key={trip._id} className="card trip-card">
+                        </div>
+
+                        <div className="div-2">
+                            <div className="div-3">
+                                <div className="text-wrapper-3">Upcoming Trips (Driver)</div>
+                                <div className="trips">
+                                    {trips.length === 0 ? (
+                                        <p>No upcoming trips</p>
+                                    ) : (
+                                        trips.map((trip) => (
+                                            <div key={trip._id}>
                                                 <h2>{trip.destinationName}</h2>
                                                 <p><strong>Date:</strong> {trip.date}</p>
-                                                <p><strong>Time:</strong> {trip.time}</p>
-                                                <p><strong>Driver:</strong> {trip.email}</p>
-                                                <div>
-                                                <button onClick={() => handleLeaveTrip(trip._id)} className="login-button">
-                                                    Leave Trip
-                                                </button>
-                                                </div>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                )}
-                                <Link to="/offer-board" className="login-button">
-                                    <div className="text-wrapper-4">Find a Ride</div>
-                                </Link>
+                                            </div>
+                                        ))
+                                    )
+                                    } 
+                                </div>
+                                
+                    
+                                <a href="\request" className="button-instance">Create New Trip</a>
                             </div>
-                            <div className="card recent-trips-card">Recent Trips</div>
+
+                            <div className="div-3">
+                                <div className="text-wrapper-3">Upcoming Trips (Passenger)</div>
+                                <div className="trips">
+                                    {joinedTrips.length === 0 ? (
+                                        <p>You haven’t joined any trips yet.</p>
+                                    ) : (
+                                        <ul className="space-y-4">
+                                            {joinedTrips.map(trip => (
+                                                <li key={trip._id}>
+                                                    <h2>{trip.destinationName}</h2>
+                                                    <p><strong>Date:</strong> {trip.date}</p>
+                                                    <p><strong>Time:</strong> {trip.time}</p>
+                                                    <p><strong>Driver:</strong> {trip.email}</p>
+                                                    <div>
+                                                    <button onClick={() => handleLeaveTrip(trip._id)} className="login-button">
+                                                        Leave Trip
+                                                    </button>
+                                                    </div>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    )}
+                                </div>
+                                
+                                <a href="/offer-board" className="button-instance">Find A Ride</a>
+                            </div>
+
+                            <div className="recent-trips-block">
+                                <div className="text-wrapper-3">Recent Trips</div>
+                                <p>No recent trips</p>
+                            </div>
                         </div>
                     </div>
-
                 </>
             ) : (
                 <>
@@ -184,164 +202,3 @@ export const Profile = () => {
 };
 
 export default Profile;
-
-{/* }
-import React from "react";
-import { TextLink } from "./TextLink";
-// import { TripDisplay } from "./TripDisplay";
-import "./style.css";
-//<Avatar initials="A" size="large" />
-
-export const TripDisplay = ({ className }) => {
-    return (
-        <div className={`trip-display ${className}`}>
-            <div className="trip-info">
-                <div className="div">3/15</div>
-                <div className="text-wrapper-2">Target</div>
-            </div>
-            <TextLink className="text-link-instance" text="View Details" />
-        </div>
-    )
-}
-
-export const Dashboard = () => {
-    return (
-        <div className="dashboard">
-            <div className="div-2">
-                <div className="messages-block">
-                    <div className="text-wrapper-2">Messages</div>
-
-                    <div className="avatar-block-2">
-                        happy
-                        <div className="div-wrapper">
-                            <div className="text-wrapper-3">Latest Message</div>
-                        </div>
-                    </div>
-
-                    {/* }
-                    <div className="avatar-block-2">
-                        <Avatar
-                            initials="A"
-                            initialsClassName="design-component-instance-node"
-                            shape="circle"
-                            size="large"
-                            type="initial"
-                        />
-                        <div className="div-wrapper">
-                            <div className="text-wrapper-3">Latest Message</div>
-                        </div>
-                    </div>
-
-                    <div className="avatar-block-2">
-                        <Avatar
-                            initials="A"
-                            initialsClassName="design-component-instance-node"
-                            shape="circle"
-                            size="large"
-                            type="initial"
-                        />
-                        <div className="div-wrapper">
-                            <div className="text-wrapper-3">Latest Message</div>
-                        </div>
-                    </div>
-
-                    <div className="avatar-block-2">
-                        <Avatar
-                            initials="A"
-                            initialsClassName="design-component-instance-node"
-                            shape="circle"
-                            size="large"
-                            type="initial"
-                        />
-                        <div className="div-wrapper">
-                            <div className="text-wrapper-3">Latest Message</div>
-                        </div>
-                    </div>
-
-                    <div className="avatar-block-2">
-                        <Avatar
-                            initials="A"
-                            initialsClassName="design-component-instance-node"
-                            shape="circle"
-                            size="large"
-                            type="initial"
-                        />
-                        <div className="div-wrapper">
-                            <div className="text-wrapper-3">Latest Message</div>
-                        </div>
-                    </div>*/}
-{/* }
-                </div>
-
-                <div className="profile-block">
-                        <div className="text-wrapper-4">Profile</div>
-                        {/* <AvatarBlock
-                        avatarInitials="A"
-                        avatarInitialsClassName="design-component-instance-node"
-                        avatarType="initial"
-                        className="design-component-instance-node-3"
-                        description="XXX lbs carbon saved"
-                        infoClassName="avatar-block-instance"
-                        title="Albert"
-                    />*/}
-{/* }
-                    <TextLink
-                        className="design-component-instance-node-2"
-                        text="Profile Settings"
-                    />
-                </div>
-
-                <div className="text-wrapper-4">LMB</div>
-
-                <div className="right-display">
-                    <div className="div-3">
-                        <div className="text-wrapper-2">Upcoming Trips (Driver)</div>
-
-                        <TripDisplay className="design-component-instance-node-3" />
-                        <TripDisplay
-                            className="design-component-instance-node-3"
-                            text="3/22"
-                            text1="Walmart"
-                        />
-                        <Button
-                            className="button-instance"
-                            labelText="Create New Trip"
-                            labelTextClassName="button-2"
-                            showIcon={false}
-                            style="filled"
-                        />
-                    </div>
-
-                    <div className="div-3">
-                        <div className="text-wrapper-2">Upcoming Trips (Passenger)</div>
-
-                        <div className="text-wrapper-5">No upcoming trips</div>
-                            {/* }
-                        <Button
-                            className="button-instance"
-                            labelText="Find a Ride"
-                            labelTextClassName="button-2"
-                            showIcon={false}
-                            style="filled"
-                        />*/}
-
-{/* }
-                    </div>
-
-                    <div className="recent-trips-block">
-                        <div className="text-wrapper-2">Recent Trips</div>
-
-                        <TripDisplay
-                            className="design-component-instance-node-3"
-                            text="3/8"
-                            text1="Trader Joe�s"
-                            textLinkText="Rate Trip"
-                        />
-                    </div>
-                </div>
-            </div>
-            </div>
-
-    );
-};
-*/}
