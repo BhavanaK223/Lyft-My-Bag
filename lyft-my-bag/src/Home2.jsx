@@ -78,7 +78,7 @@ export const HomePage = () => {
             <footer className="footer">
                 <div className="overlap-group">
                     <p className="footer-text">
-                        footer placeholder
+                        
                     </p>
                 </div>
             </footer>
