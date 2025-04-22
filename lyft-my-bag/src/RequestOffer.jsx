@@ -7,7 +7,7 @@ import "./RequestOffer.css";
 const RequestOffer = () => {
     //user information
     const [user, setUser] = useState(null);
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
     useEffect(() => {
         const storedUser = localStorage.getItem('user');
         if(storedUser) {
@@ -70,6 +70,7 @@ const RequestOffer = () => {
             if (response.ok) {
               alert("Trip created!");
               reset();
+              navigate("/offer-board");
             } else {
               console.error(data);
             }
@@ -164,10 +165,10 @@ const RequestOffer = () => {
                                 <Link to="/profile" className="button">
                                     <button className="button-2">Cancel</button>
                                 </Link>
-
-                                <div className="button-wrapper">
-                                    <button className="button-3" type="submit">Submit</button>
+                                <div  className="button-wrapper">
+                                    <button type="submit" className="button-3">Submit</button>
                                 </div>
+                                                                
                             </div>
                         </form>
                     </div>

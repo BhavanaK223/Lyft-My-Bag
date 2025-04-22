@@ -85,7 +85,7 @@ export const Profile = () => {
             if (res.ok) {
                 alert("Successfully left trip!");
                 // Refresh trip data to update seat count
-                const updatedTrips = await fetch("http://localhost:5000/api/trips");
+                const updatedTrips = await fetch("http://localhost:5000/api/joined-trips");
                 const updatedData = await updatedTrips.json();
                 setTrips(updatedData);
                 navigate(0);
@@ -98,6 +98,37 @@ export const Profile = () => {
         }
     };
     
+    const handleRemoveTrip = async (tripId) => {
+        const storedUser = localStorage.getItem('user');
+        if (!storedUser) {
+            alert("You must be logged in to remove a trip");
+            return;
+        }
+        const userEmail = JSON.parse(storedUser).email;
+
+        try {
+            const res = await fetch("http://localhost:5000/api/remove-trip", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ trip_id: tripId, email: userEmail})
+            });
+    
+            const data = await res.json();
+    
+            if (res.ok) {
+                alert("Successfully deleted trip!");
+                // Refresh trip data to update seat count
+                const updatedTrips = await fetch("http://localhost:5000/api/user-trips?email=" + userEmail);
+                const updatedData = await updatedTrips.json();
+                setTrips(updatedData);
+            } else {
+                alert(data.error || "Something went wrong");
+            }
+        } catch (err) {
+            console.error("Error deleting trip:", err);
+            alert("Could not delete trip");
+        }
+    }
 
     const handleLogout = () => {
         localStorage.removeItem('user');
@@ -139,17 +170,20 @@ export const Profile = () => {
                             <div className="div-3">
                                 <div className="text-wrapper-3">Upcoming Trips (Driver)</div>
                                 <div className="trips">
-                                    {trips.length === 0 ? (
-                                        <p>No upcoming trips</p>
-                                    ) : (
-                                        trips.map((trip) => (
+                                {trips.length === 0 ? (
+                                    <p>No upcoming trips</p>
+                                ) : (
+                                    trips.map((trip) => (
                                             <div key={trip._id}>
-                                                <h2>{trip.destinationName}</h2>
-                                                <p><strong>Date:</strong> {trip.date}</p>
-                                            </div>
-                                        ))
-                                    )
-                                    } 
+                                            <h2>{trip.destinationName}</h2>
+                                            <p><strong>Date:</strong> {trip.date}</p>
+                                            <button onClick={() => handleRemoveTrip(trip._id)} className="login-button">
+                                                   Delete Trip
+                                             </button>
+                                        </div>
+                                    ))
+                                )
+                                }
                                 </div>
                                 
                     
