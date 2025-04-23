@@ -258,15 +258,16 @@ def remove_trip():
 @app.route('/api/delete-user', methods=['POST'])
 def delete_user():
     data = request.json
-    user_id = data.get('user_id')
     email = data.get('email')
+    print("data:")
+    print (data)
 
-    if not user_id or not email:
+    if not email:
         return jsonify({"error": "Missing user_id or email"}), 400
 
     # Check if the user exists
-    user = mongo.db.users.find_one({"_id": ObjectId(user_id)})
-
+    user = mongo.db.users.find_one({"email": email})
+    
     if not user:
         return jsonify({"error": "User not found"}), 404
 
@@ -275,7 +276,7 @@ def delete_user():
         return jsonify({"error": "Not the owner of this account"}), 400
 
     # Remove the user from the database
-    result = mongo.db.users.delete_one({"_id": ObjectId(user_id)})
+    result = mongo.db.users.delete_one({"email": email})
 
     if result.deleted_count == 0:
         return jsonify({"error": "User not found"}), 404
