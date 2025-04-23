@@ -462,7 +462,7 @@ export const Profile = () => {
         const userEmail = JSON.parse(storedUser).email;
         
         try {
-            const res = await fetch("http://localhost:5000/api/delete-account", {
+            const res = await fetch("http://localhost:5000/api/delete-user", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email: userEmail })
