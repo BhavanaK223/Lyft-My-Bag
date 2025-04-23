@@ -267,7 +267,7 @@ def delete_user():
 
     # Check if the user exists
     user = mongo.db.users.find_one({"email": email})
-    
+
     if not user:
         return jsonify({"error": "User not found"}), 404
 
@@ -280,6 +280,8 @@ def delete_user():
 
     if result.deleted_count == 0:
         return jsonify({"error": "User not found"}), 404
+    
+    return jsonify({"message": "User deleted successfully"}), 200
 
 if __name__ == '__main__':
     app.run(debug=True)
