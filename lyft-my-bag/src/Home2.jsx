@@ -78,8 +78,13 @@ export const HomePage = () => {
             <footer className="footer">
                 <div className="overlap-group">
                     <p className="footer-text">
-                        
+                        Group 2: <br/>
+                        Bhavana Kavarthapu <br/>
+                        Cindy Jiang <br/>
+                        Savannah Ogletree <br/>
+                        Valentina Esteban <br/>
                     </p>
+                    {/* <a href="https://github.com/BhavanaK223/Lyft-My-Bag" className="footer-text">Github</a> */}
                 </div>
             </footer>
         </div>
