@@ -249,3 +249,53 @@ header {
     overflow-x: hidden;
     width: 100%;
 }
+
+.settings-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+.settings-modal {
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    width: 400px;
+    max-width: 90%;
+    z-index: 1000;
+}
+
+.delete-account-button,
+.confirm-delete-button,
+.cancel-button,
+.close-modal-button {
+    margin-top: 20px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.confirm-delete-button {
+    background-color: red;
+    color: white;
+}
+
+.cancel-button {
+    background-color: gray;
+    color: white;
+}
+
+.close-modal-button {
+    background-color: #007bff;
+    color: white;
+}
