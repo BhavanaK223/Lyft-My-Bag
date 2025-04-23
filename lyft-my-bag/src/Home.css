@@ -40,7 +40,7 @@
     font-size: var(--paragraph-font-size);
     font-style: var(--paragraph-font-style);
     font-weight: var(--paragraph-font-weight);
-    left: 519px;
+    left: 40%;
     letter-spacing: var(--paragraph-letter-spacing);
     line-height: var(--paragraph-line-height);
     position: absolute;
@@ -129,7 +129,7 @@
     align-self: stretch;
     color: var(--dark-green);
     font-family: "Roboto Mono-Thin", Helvetica;
-    font-size: 36px;
+    font-size: 24px;
     font-weight: 100;
     letter-spacing: 0;
     line-height: normal;
@@ -198,6 +198,7 @@
     left: 28px;
     letter-spacing: 0;
     line-height: normal;
+    margin-top: 10px;
     position: absolute;
     top: 0;
 }
@@ -226,6 +227,7 @@
     flex: 0 0 auto;
     gap: 10px;
     justify-content: center;
+    margin-top: 10px;
     overflow: hidden;
     padding: 10px 30px;
     position: relative;
