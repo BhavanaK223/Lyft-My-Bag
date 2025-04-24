@@ -96,11 +96,13 @@ export const OfferBoard = () => {
             <div className="p-4">
                 <h1 className="text-2xl font-bold mb-4">Offer Board</h1>
                 {trips.length === 0 ? (
-                    <p>No trips available yet.
-                    <Link to="/login" className="login-button">
-                        <div className="text-wrapper-4">Create New Trip</div>
-                    </Link>
-                    </p>
+                    <div className="button-group">
+                        <p className="p">No trips yet</p>
+                                <Link to="/login" className="login-button">
+                                    <div className="text-wrapper-4">Create New Trip</div>
+                                </Link>
+                                                                
+                            </div>
                 ) : (
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {trips.map((trip) => (
