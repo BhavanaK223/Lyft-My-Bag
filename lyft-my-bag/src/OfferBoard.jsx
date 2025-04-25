@@ -7,7 +7,7 @@ import { TextLink } from "./TextLink";
 export const OfferBoard = () => {
     const [trips, setTrips] = useState([]);
     const [userEmail, setUserEmail] = useState("");
-
+    const navigate = useNavigate();
 
 
     useEffect(() => {
@@ -51,6 +51,7 @@ export const OfferBoard = () => {
                 const updatedTrips = await fetch("http://localhost:5000/api/trips");
                 const updatedData = await updatedTrips.json();
                 setTrips(updatedData);
+                navigate("/profile"); 
             } else {
                 alert(data.error || "Something went wrong");
             }
@@ -128,9 +129,9 @@ export const OfferBoard = () => {
                         {trip.riders?.includes(userEmail) && (
                             <div>
                                 <p>You have joined this trip!</p>
-                            <button onClick={() => handleLeaveTrip(trip._id)} className="login-button">
+                            {/* <button onClick={() => handleLeaveTrip(trip._id)} className="login-button">
                                 Leave Trip
-                            </button>
+                            </button> */}
                             </div>
                             
                         )}
