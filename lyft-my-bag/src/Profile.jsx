@@ -97,7 +97,8 @@ export const Profile = () => {
             }
         } catch (err) {
             console.error("Error leaving trip:", err);
-            alert("Could not leave trip");
+            //alert("Could not leave trip");
+            navigate(0);
         }
     };
     
