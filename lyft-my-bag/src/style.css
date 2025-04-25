@@ -441,3 +441,132 @@
         text-align: center;
     }
     
+    .trip-display {
+        align-items: flex-start;
+        background-color: var(--white);
+        border: 1px solid;
+        border-color: var(--dark-green);
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        min-height: 250px;
+        overflow: hidden;
+        padding: 22px;
+        position: relative;
+        width: 510px;
+    }
+    
+    .trip-display .avatar-block {
+        align-items: center;
+        align-self: stretch;
+        display: flex;
+        gap: var(--size-space-300);
+        height: 40px;
+        position: relative;
+        width: 100%;
+    }
+    
+    .trip-display .avatar-instance {
+        background-image: url(./image.png) !important;
+        position: relative !important;
+    }
+    
+    .trip-display .info {
+        align-items: flex-start;
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        flex-grow: 1;
+        gap: var(--size-space-050);
+        position: relative;
+    }
+    
+    .trip-display .title {
+        align-self: stretch;
+        color: var(--color-text-default-secondary);
+        font-family: var(--body-strong-font-family);
+        font-size: var(--body-strong-font-size);
+        font-style: var(--body-strong-font-style);
+        font-weight: var(--body-strong-font-weight);
+        letter-spacing: var(--body-strong-letter-spacing);
+        line-height: var(--body-strong-line-height);
+        margin-top: -1.00px;
+        position: relative;
+    }
+    
+    .trip-display .frame {
+        align-items: flex-start;
+        align-self: stretch;
+        display: flex;
+        flex: 0 0 auto;
+        flex-direction: column;
+        gap: 15px;
+        position: relative;
+        width: 100%;
+    }
+    
+    .trip-display .div {
+        align-items: center;
+        align-self: stretch;
+        display: flex;
+        flex: 0 0 auto;
+        gap: 25px;
+        position: relative;
+        width: 100%;
+    }
+    
+    .trip-display .destination {
+        color: #000000;
+        font-family: "Roboto Mono-Medium", Helvetica;
+        font-size: 16px;
+        font-weight: 500;
+        letter-spacing: 0;
+        line-height: normal;
+        position: relative;
+        width: fit-content;
+    }
+    
+    .trip-display .address {
+        color: #5a5656;
+        font-family: var(--small-text-font-family);
+        font-size: var(--small-text-font-size);
+        font-style: var(--small-text-font-style);
+        font-weight: var(--small-text-font-weight);
+        height: 18.5px;
+        letter-spacing: var(--small-text-letter-spacing);
+        line-height: var(--small-text-line-height);
+        margin-top: -1.00px;
+        position: relative;
+        width: 128px;
+    }
+    
+    .trip-display .text-wrapper {
+        color: #000000;
+        font-family: var(--small-text-font-family);
+        font-size: var(--small-text-font-size);
+        font-style: var(--small-text-font-style);
+        font-weight: var(--small-text-font-weight);
+        letter-spacing: var(--small-text-letter-spacing);
+        line-height: var(--small-text-line-height);
+        margin-top: -1.00px;
+        position: relative;
+        width: fit-content;
+    }
+    
+    .trip-display .button-instance {
+        background-color: var(--blue) !important;
+        border: none;
+        border-radius: 20px;
+        color: var(--white);
+        font-family: var(--button-font-family) !important;
+        font-size: var(--button-font-size) !important;
+        font-style: var(--button-font-style) !important;
+        font-weight: var(--button-font-weight) !important;
+        letter-spacing: var(--button-letter-spacing) !important;
+        line-height: var(--button-line-height) !important;
+        margin-top: -1.50px !important;
+        opacity: 0.9 !important;
+        padding: var(--size-space-300);
+        white-space: unset !important;
+    }
